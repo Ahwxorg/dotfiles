@@ -1,0 +1,20 @@
+Print
+	maim --select | tee ~/pix/ss/$(date +%s).jpg | xclip -sel c -t image/jpg
+
+super + Print 
+	maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel XA_CLIPBOARD -t image/jpg
+
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	pamixer -{i,d,t} 2; kill -34 $(cat ~/.cache/pidofbar)
+
+XF86MonBrightness{Up,Down}
+	brightnessctl s {+2%,2%-}
+
+super + p
+	system_action
+
+super + Shift + s
+  flameshot gui
+
+super + n
+  networkmanager_dmenu

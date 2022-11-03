@@ -1,0 +1,4 @@
+#!/bin/bash 
+#
+echo "[ 墳 $(amixer get Master | grep -iEo '...%' | cut -d '[' -f2) ] "
+

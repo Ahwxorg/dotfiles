@@ -1,0 +1,4 @@
+#!/bin/bash
+
+amixer sset Master 5%-
+kill -49 $(pidof dwmblocks)

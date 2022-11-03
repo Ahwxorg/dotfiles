@@ -1,0 +1,5 @@
+#!/bin/bash
+
+amixer set Capture toggle | gawk 'match($0, /Front Left.*\[(.*)\]/, a) {print a[1]}' | xargs notify-send --hint=int:transient:1 -i \"audio-input-microphone\" \"Mic switched: $1\"
+
+echo kill -49 $(pidof dwmblocks)
