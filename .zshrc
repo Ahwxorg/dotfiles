@@ -22,8 +22,10 @@ fi
 
 alias zshconf="nvim ~/.zshrc"
 alias pacman="doas pacman"
-alias i3conf="nvim ~/.config/i3/config"
+alias dwmconf="nvim ~/.local/src/dwm/config.h"
 alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
+alias open="xdg-open"
+alias upload='curl -F"file=@$(find $HOME -type f | dmenu -i -l 35)" https://0x0.st'
 
 alias gc="git clone"
 alias ga="git add ."

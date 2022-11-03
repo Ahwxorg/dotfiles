@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while read file
+do 
+  case "$1" in
+    "d") mv "$file" ~/.local/trash ;;
+  esac
+done
