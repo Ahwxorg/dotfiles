@@ -4,6 +4,10 @@ PATH="$HOME/dev/website-shit/bin/:$PATH"
 
 export PATH="${PATH}:${HOME}/.local/bin/"
 
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export EDITOR=nvim
+
 ZSH_THEME="alanpeabody"
 
 ENABLE_CORRECTION="true"
@@ -13,12 +17,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
 
 alias zshconf="nvim ~/.zshrc"
 alias pacman="doas pacman"
@@ -33,5 +31,11 @@ alias gcm="git commit -m"
 alias gph="git push -u origin main"
 
 alias rebuild="doas make uninstall; doas make clean install"
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
+
+if [[ ! $TERM = screen ]]; then
+  exec tmux
+fi
 
 complete -cf doas
