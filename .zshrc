@@ -35,8 +35,8 @@ alias rebuild="doas make uninstall; doas make clean install"
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx; fi
 
 # some problems so not yet a thing
-#if [[ ! $TERM = screen ]]; then
-#  exec tmux
-#fi
+if [[ $TERM = "st-256color" ]]; then
+  exec tmux
+fi
 
 complete -cf doas
