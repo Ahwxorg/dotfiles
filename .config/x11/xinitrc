@@ -1,8 +1,8 @@
-xrandr --ouput eDP1 --scale 0.75 &
 picom &
 wallpaper-pywal &
-dwm_bar &
+# dwmblocks &
 dunst &
 sxhkd &
+~/.local/src/dwm/bar &
 
-exec dwm > /dev/null 2>&1
+exec dwm

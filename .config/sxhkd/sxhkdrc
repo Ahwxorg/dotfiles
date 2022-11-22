@@ -5,16 +5,22 @@ super + Print
 	maim | tee ~/pix/ss/$(date +%s).jpg | xclip -sel XA_CLIPBOARD -t image/jpg
 
 XF86Audio{RaiseVolume,LowerVolume,Mute}
-	pamixer -{i,d,t} 2; kill -34 $(cat ~/.cache/pidofbar)
+	pamixer -{i,d,t} 5; kill -34 $(cat ~/.cache/pidofbar)
 
 XF86MonBrightness{Up,Down}
-	brightnessctl s {+2%,2%-}
+	brightnessctl s {+5%,5%-}; kill -34 $(cat ~/.cache/pidofbar)
 
 super + p
 	system_action
 
-super + Shift + s
+super + l
+	slock
+
+super + s
   flameshot gui
 
 super + n
   networkmanager_dmenu
+
+super + o
+  ~/.local/bin/startup_script.sh
