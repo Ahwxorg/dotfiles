@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <center>
+      <h2 id="greeting"></h2>
+      <h3>Socials</h3>
+        <a href="https://r.ahwx.org" class="button" role="button">Reddit frontpage</a>
+        <a href="https://r.ahwx.org/r/unixporn" class="button" role="button">r/unixporn</a>
+        <a href="https://discord.com/login" class="button" role="button">Discord</a>
+        <a href="https://icloud.com/mail" class="button" role="button">Mail</a>
+        <a href="https://wallhaven.cc" class="button" role="button">Wallhaven</a>
+      <br>
+      <h3>Management</h3>
+        <a href="https://10.0.0.1" class="button" role="button">UniFi UDM Pro</a>
+        <a href="https://10.0.0.183:9090" class="button" role="button">Cockpit</a>
+        <a href="http://10.0.0.183:9000" class="button" role="button">Portainer</a>
+        <a href="https://10.0.0.183:8001" class="button" role="button">PiHole</a>
+        <a href="http://192.168.2.254" class="button" role="button">Gateway</a>
+      <br>
+      <h3>Selfhosted</h3>
+        <a href="https://ha.vandorpeisses.nl" class="button" role="button">Home Assistant</a>
+        <a href="https://ahwx.org/files" class="button" role="button">Files</a>
+        <a href="https://jellyfin.ahwx.org" class="button" role="button">Jellyfin</a>
+        <a href="https://ahwx.org" class="button" role="button">Website</a>
+        <a href="https://jaapvd.nl" class="button" role="button">Portfolio</a>
+    </center>
+  </body>
+  <script>
+const greeting = document.getElementById("greeting");
+const hour = new Date().getHours();
+const welcomeTypes = ["Go to bed :)", "Enjoy your morning coffee!", "Good afternoon!", "Good night!"];
+let welcomeText = "";
+
+if (hour < 6) welcomeText = welcomeTypes[0];
+else if (hour < 12) welcomeText = welcomeTypes[1];
+else if (hour < 18) welcomeText = welcomeTypes[2];
+else if (hour < 23) welcomeText = welcomeTypes[3];
+else welcomeText = welcomeTypes[0];
+
+greeting.innerHTML = welcomeText;
+  </script>
+</html>

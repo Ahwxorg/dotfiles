@@ -19,6 +19,9 @@ super + l
 super + s
   flameshot gui
 
+super + b
+  bitwarden-desktop
+
 super + n
   networkmanager_dmenu
 
