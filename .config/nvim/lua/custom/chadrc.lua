@@ -6,7 +6,7 @@ local M = {}
 -- example of changing theme:
 
 M.ui = {
-   theme = "nord",
+   theme = "catppuccin",
 }
 
 M.options = {
@@ -23,4 +23,7 @@ M.plugins = {
 -- see: https://github.com/wbthomason/packer.nvim
 -- https://nvchad.github.io/config/walkthrough
 
+M.plugins = require "custom.plugins"
+
 return M
+

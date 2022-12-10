@@ -14,9 +14,9 @@ M.ui = {
   hl_add = {},
   hl_override = {},
   changed_themes = {},
-  theme_toggle = { "onedark", "one_light" },
-  theme = "onedark", -- default theme
-  transparency = true,
+  theme_toggle = { "aquarium", "one_light" },
+  theme = "aquarium", -- default theme
+  transparency = false,
 }
 
 M.plugins = {}

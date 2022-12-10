@@ -26,18 +26,18 @@ if status --is-login
   end
 end
 
-if status is-interactive
-and not set -q TMUX
-    exec tmux
-end
+#if status is-interactive
+#and not set -q TMUX
+#    exec tmux
+#end
 
 function fish_user_key_bindings
   # ctrl-del
-  bind \e\[3\;5~ kill-word
+  bind \c\^\[\[\M kill-word
 
-  # ctrl-]
-  bind \c] backward-kill-word
+  # ctrl-back
+  bind \cH backward-kill-word
 end
 
 fish_add_path -m ~/.local/bin
-fish_add_path -m ~/dev/website-shit/bin
+fish_add_path -m ~/dev/web/website-shit/bin

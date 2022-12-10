@@ -9,7 +9,7 @@ update_memory () {
 }
 
 update_time () { 
-	time="$(date "+[  %a %d %b ] [  %I:%M %P ]")" 
+	time="$(date "+[   %a %d %b ] [   %I:%M %P ]")" 
 }
 
 update_bat () { 
@@ -29,19 +29,19 @@ update_bat () {
 	else 
 		bat_status=""
 	fi
-	bat="$bat_status  $bat_capacity%"
+	bat="$bat_status   $bat_capacity%"
 }
 
 update_backlight () {
-  backlight=" $(xbacklight -get | cut -d. -f1)%"
+  backlight="  $(fish -c 'echo (echo (math (brightnessctl g) / 1515 \* 100) | cut -d. -f1)%')"
 }
 
 update_vol () { 
-	vol="$([ "$(pamixer --get-mute)" = "false" ] && printf ' ' || printf ' ')$(pamixer --get-volume)%"
+	vol="$([ "$(pamixer --get-mute)" = "false" ] && printf '  ' || printf '  ')$(pamixer --get-volume)%"
 }
 
 display () { 
-	xsetroot -name "[  $memory ] [ $vol ] [ $backlight ] [ $bat ] $time"
+	xsetroot -name "   [   $memory ] [ $vol ] [ $backlight ] [ $bat ] $time"
 }
 
 update_bat
@@ -63,8 +63,8 @@ do
 		## [ $((sec % n)) -eq m ] && udpate_item
 		[ $((sec % 1 )) -eq 0 ] && update_time
 		[ $((sec % 5 )) -eq 0 ] && update_memory
-    [ $((sec % 1 )) -eq 0 ] && update_bat
-    [ $((sec % 1 )) -eq 0 ] && update_backlight
+                [ $((sec % 1 )) -eq 0 ] && update_bat
+                [ $((sec % 1 )) -eq 0 ] && update_backlight
 
 		# how often the display updates ( 5 seconds )
 		[ $((sec % 1 )) -eq 0 ] && display

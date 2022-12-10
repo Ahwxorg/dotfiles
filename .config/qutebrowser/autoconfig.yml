@@ -6,8 +6,12 @@
 
 config_version: 2
 settings:
+  content.media.audio_capture:
+    https://discord.com: false
   content.notifications.enabled:
+    https://jellyfin.ahwx.org: false
     https://www.reddit.com: false
+    https://www.youtube.com: false
   fonts.web.family.sans_serif:
     global: DejaVu Sans
   fonts.web.family.serif:
