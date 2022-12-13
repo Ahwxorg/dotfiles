@@ -93,7 +93,8 @@ cat <<EOF
 
 EOF
 
-echo "Do you want to continue? [y/n]"
+echo "Do you have all dependencies installed and do you want to continue? [y/n]"
+echo "I will add auto installation for packages once I am done with my main install (never)."
 read -r confirmation_begin
 
 case "$confirmation_begin" in
