@@ -12,6 +12,15 @@ update_time () {
 	time="$(date "+[   %a %d %b ] [   %I:%M %P ]")" 
 }
 
+update_uptime () {
+  uptime=$(upt)
+}
+
+update_nettraf () {
+  nettraf=$(nettraf)
+  # ﯱ
+}
+
 update_bat () { 
 	# you might need to change the path depending on your device
   bat_status=$(cat /sys/class/power_supply/BAT0/status)
@@ -41,7 +50,7 @@ update_vol () {
 }
 
 display () { 
-	xsetroot -name "   [   $memory ] [ $vol ] [ $backlight ] [ $bat ] $time"
+	xsetroot -name "   [  $uptime ] [   $memory ] [ $vol ] [ $backlight ] [ $bat ] $time"
 }
 
 update_bat
@@ -49,6 +58,8 @@ update_vol
 update_time
 update_memory
 update_backlight
+#update_nettraf
+update_uptime
 
 trap	"update_vol;update_backlight;display"	"RTMIN"
 
@@ -63,8 +74,11 @@ do
 		## [ $((sec % n)) -eq m ] && udpate_item
 		[ $((sec % 1 )) -eq 0 ] && update_time
 		[ $((sec % 5 )) -eq 0 ] && update_memory
-                [ $((sec % 1 )) -eq 0 ] && update_bat
-                [ $((sec % 1 )) -eq 0 ] && update_backlight
+    [ $((sec % 1 )) -eq 0 ] && update_bat
+    [ $((sec % 1 )) -eq 0 ] && update_backlight
+    [ $((sec % 60)) -eq 0 ] && update_uptime
+#    [ $((sec % 1 )) -eq 0 ] && update_nettraf
+    [ $((sec % 300 )) -eq 0 ] && /home/ahwx/.local/bin/batterynotification
 
 		# how often the display updates ( 5 seconds )
 		[ $((sec % 1 )) -eq 0 ] && display

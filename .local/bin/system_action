@@ -1,16 +1,9 @@
 #!/bin/sh
 # A dmenu wrapper script for system functions.
-case "$(readlink -f /sbin/init)" in
-	*systemd*) ctl='systemctl' ;;
-	*) ctl='loginctl' ;;
-esac
 
-case "$(printf " lock\n display off\n logout\n sleep\n reboot\n shutdown" | dmenu -i -p 'Action: ')" in
-	' lock') slock ;;
-	' display off') xset dpms force off ;;
-	' logout') kill -TERM "$(pgrep -u "$USER" "\bdwm$")" ;;
-	' sleep') slock $ctl suspend ;;
-	' reboot') $ctl reboot ;;
-	' shutdown') $ctl poweroff ;;
+case "$(printf "powermenu\nupdate\npowermenu" | dmenu -l 25 -i -p 'Action: ')" in
+	'definition') /home/ahwx/.local/bin/system_actions/clip-definition ;;
+	'powermenu') /home/ahwx/.local/bin/system_actions/powermenu ;;
+  'update') st -e doas xbps-install -Su; pacman -Syyu ;;
 	*) exit 1 ;;
 esac
