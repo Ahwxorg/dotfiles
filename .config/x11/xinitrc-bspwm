@@ -3,4 +3,4 @@ picom &
 dunst &
 polybar &
 
-exce bspwm
+exec bspwm

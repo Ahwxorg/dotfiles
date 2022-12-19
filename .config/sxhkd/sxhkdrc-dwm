@@ -1,0 +1,36 @@
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	pamixer -{i,d,t} 5; kill -34 $(cat ~/.cache/pidofbar); notify-send -r 9992 -u low "" "Volume is {at $(pamixer --get-volume)%,at $(pamixer --get-volume)%,muted}."
+
+XF86MonBrightness{Up,Down}
+	brightnessctl s {+5%,5%-}; kill -34 $(cat ~/.cache/pidofbar); notify-send -r 9993 -u low "Brightness" "Brightness is at $(fish -c 'echo (echo (math (brightnessctl g) / 1515 \* 100) | cut -d. -f1)%')"
+
+super + p
+	system_action
+
+super + Escape
+  pkill -usr1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+
+super + k
+  rofi -show drun
+
+super + d
+  rofi -show drun
+
+super + l
+	slock
+
+super + x
+  ~/.local/bin/system_actions/powermenu
+
+super + shift + s
+  flameshot gui
+
+super + b
+  bitwarden-desktop
+
+super + n
+  networkmanager_dmenu
+
+super + Return
+  st
+

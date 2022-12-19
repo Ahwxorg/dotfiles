@@ -4,7 +4,6 @@
 wallpaper-pywal
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-polybar -r &
 
 workspaces() {
 	name=1
@@ -50,14 +49,3 @@ declare -a floats=(Alafloat kitty Arandr \
 Viewnior Pcmanfm feh Nm-connection-editor Matplotlib Yad)
 for i in ${floats[@]}; do
   bspc rule -a $i state=floating follow=on focus=on; done
-
-## Autostart
-
-# Kill if already running
-killall -9 picom sxhkd dunst xfce4-power-manager
-
-dunst &
-sxhkd &
-picom &
-st &
-xclip &

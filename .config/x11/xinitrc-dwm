@@ -1,0 +1,9 @@
+picom &
+wallpaper-pywal &
+dunst &
+~/.local/bin/bar &
+sxhkd -c=~/.config/sxhkd/sxhdkrc-dwm
+
+while true; do
+  dwm >/dev/null 2>&1
+done

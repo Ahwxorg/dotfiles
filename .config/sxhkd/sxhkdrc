@@ -25,6 +25,9 @@ super + x
 super + shift + s
   flameshot gui
 
+super + s
+  rofi -show ssh
+
 super + b
   bitwarden-desktop
 

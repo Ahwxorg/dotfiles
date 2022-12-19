@@ -1,5 +1,9 @@
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
+[module/upt]
+type = custom/script
+exec = /home/ahwx/.local/bin/upt
+
 [module/backlight]
 type = internal/xbacklight
 
