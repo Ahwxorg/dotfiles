@@ -29,12 +29,10 @@ pkg() {
   fi
 }
 
-alias pacman="doas pacman"
-
 bindkey '^H' backward-kill-word
 bindkey '5~' kill-word
 
-alias ls="exa"
+alias ls="exa -l"
 alias ll="exa -l"
 alias l="exa -la"
 alias la="exa -la"
@@ -54,8 +52,6 @@ alias ga="git add ."
 alias gcm="git commit -m"
 alias gph="git push -u origin main"
 
-alias rebuild="doas make uninstall; doas make clean install"
-
 startwm () {
   echo "Which WM do you want to start? [bspwm (2)/dwm (1)]"
   read -r wm
@@ -73,5 +69,13 @@ startwm () {
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
+
+if [[ -d ~/Downloads ]]; then
+  rmdir ~/Downloads
+fi
+
+if [[ -d ~/Desktop ]]; then
+  rmdir ~/Desktop
+fi
 
 complete -cf doas

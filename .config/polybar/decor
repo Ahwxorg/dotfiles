@@ -1,6 +1,6 @@
 [module/spacing]
 type = custom/text
-content = " "
+content = "         "
 content-background = ${color.background}
 
 [module/sep]

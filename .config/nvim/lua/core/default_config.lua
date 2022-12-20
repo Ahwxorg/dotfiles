@@ -16,7 +16,7 @@ M.ui = {
   changed_themes = {},
   theme_toggle = { "aquarium", "one_light" },
   theme = "aquarium", -- default theme
-  transparency = false,
+  transparency = true,
 }
 
 M.plugins = {}

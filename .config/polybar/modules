@@ -71,7 +71,7 @@ format-muted-prefix = "   "
 format-muted-prefix-font = 2
 
 label-volume = "%percentage%% "
-label-muted = "Mute"
+label-muted = "Muted"
 
 ramp-volume-0 = "   "
 ramp-volume-1 = "   "
@@ -143,15 +143,24 @@ reverse-scroll = true
 
 fuzzy-match = true
 
-ws-icon-0=I;"一"
-ws-icon-1=II;"二"
-ws-icon-2=III;"三"
-ws-icon-3=IV;"四"
-ws-icon-4=V;"五"
-ws-icon-5=VI;"六"
-ws-icon-6=VII;"七"
-ws-icon-7=VIII;"八"
-ws-icon-default = ""
+ws-icon-0=I;%{F#e06c75}一%{F-}
+ws-icon-1=II;%{F#d19a66}二%{F-}
+ws-icon-2=III;%{F#e5c07b}三%{F-}
+ws-icon-3=IV;%{F#98c379}四%{F-}
+ws-icon-4=V;%{F#56b6c2}五%{F-}
+ws-icon-5=VI;%{F#61afef}六%{F-}
+ws-icon-6=VII;%{F#c678dd}七%{F-}
+ws-icon-7=VIII;%{F#be5046}八%{F-}
+ws-icon-default = 
+
+;; ws-icon-0=I;一
+;; ws-icon-1=II;二
+;; ws-icon-2=III;三
+;; ws-icon-3=IV;四
+;; ws-icon-4=V;五
+;; ws-icon-5=VI;六
+;; ws-icon-6=VII;七
+;; ws-icon-7=VIII;八
 
 format = <label-state>
 format-font = 2
@@ -159,25 +168,23 @@ format-font = 2
 label-monitor = %name%
 
 label-focused = %name%
-label-focused-foreground = ${color.blue}
 label-focused-background = ${color.background}
 label-focused-underline =  ${color.blue}
 label-focused-padding = 1
 
 label-occupied = %name%
-label-occupied-foreground = ${color.magenta}
 label-occupied-background = ${color.background}
-;label-occupied-underline = 
+label-occupied-foreground = ${color.red}
+label-occupied-underline = ${color.red}
 label-occupied-padding = 1
 
 label-urgent = %name%
 label-urgent-foreground = ${color.red}
-label-urgent-background = ${color.background}
+label-urgent-background = ${color.red}
 label-urgent-underline =  ${color.red}
 label-urgent-padding = 1
 
 label-empty = %name%
-label-empty-foreground = ${color.foreground}
 label-empty-padding = 1
 
 ; Separator in between workspaces
@@ -191,8 +198,8 @@ label-separator-foreground = ${color.altblack}
 type = internal/bspwm
 
 format = <label-mode>
-format-background = ${color.magenta}
-format-foreground = ${color.background}
+format-background = ${color.background}
+format-foreground = ${color.foreground}
 format-padding = 1
 format-font = 5
 
@@ -284,6 +291,17 @@ content-foreground= ${color.background}
 content-background = ${color.blue} 
 content-padding = 1
 click-left=def-dmenu
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/pac]
+type=custom/text
+content = 
+content-font = 4
+content-foreground = ${color.foreground}
+content-background = ${color.background}
+content-padding = 1
+click-left=~/.local/bin/system_actions/system_action
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
