@@ -115,9 +115,10 @@ label-discharging = "%percentage%% "
 label-full = "%percentage%% "
 
 ramp-capacity-0 = "  "
-ramp-capacity-1 = "  "
-ramp-capacity-2 = "  "
-ramp-capacity-3 = "  "
+;; ramp-capacity-0 = "  "
+ramp-capacity-1 = "  "
+ramp-capacity-2 = "  "
+ramp-capacity-3 = "  "
 ramp-capacity-4 = "  "
 ramp-capacity-font = 2
 
@@ -169,13 +170,13 @@ label-monitor = %name%
 
 label-focused = %name%
 label-focused-background = ${color.background}
-label-focused-underline =  ${color.blue}
+label-focused-underline =  ${color.white}
 label-focused-padding = 1
 
 label-occupied = %name%
 label-occupied-background = ${color.background}
-label-occupied-foreground = ${color.red}
-label-occupied-underline = ${color.red}
+label-occupied-foreground = ${color.foreground}
+label-occupied-underline = ${color.blue}
 label-occupied-padding = 1
 
 label-urgent = %name%
