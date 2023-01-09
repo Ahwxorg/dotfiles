@@ -183,7 +183,7 @@ c.colors.tabs.selected.odd.fg = xresources['*.foreground']
 c.colors.tabs.selected.odd.bg = xresources['*.background']
 c.colors.tabs.selected.even.fg = xresources['*.foreground']
 c.colors.tabs.selected.even.bg = xresources['*.background']
-c.colors.webpage.bg = "white"
+c.colors.webpage.bg = 'Black'
 
 # web fonts
 c.fonts.web.family.serif = "Liberation Serif"
@@ -191,3 +191,4 @@ c.fonts.web.family.sans_serif = "Liberation Sans"
 c.fonts.web.family.standard = "Liberation Sans"
 c.fonts.web.family.fixed = "Fira Code"
 # custom css
+

@@ -2,7 +2,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 	pamixer -{i,d,t} 5; kill -34 $(cat ~/.cache/pidofbar); notify-send -r 9992 -u low "" "Volume is {at $(pamixer --get-volume)%,at $(pamixer --get-volume)%,muted}."
 
 XF86MonBrightness{Up,Down}
-	brightnessctl s {+5%,5%-}; kill -34 $(cat ~/.cache/pidofbar); notify-send -r 9993 -u low "Brightness" "Brightness is at $(fish -c 'echo (echo (math (brightnessctl g) / 1515 \* 100) | cut -d. -f1)%')"
+	doas brightnessctl s {+5%,5%-}; kill -34 $(cat ~/.cache/pidofbar); notify-send -r 9993 -u low "Brightness" "Brightness is at $(fish -c 'echo (echo (math (brightnessctl g) / 1515 \* 100) | cut -d. -f1)%')"
 
 super + p
 	system_action
@@ -14,22 +14,23 @@ super + k
   rofi -show drun
 
 super + d
-  rofi -show drun
+  ~/.config/rofi/bin/launcher3
 
 super + l
-	slock
+	bslock
 
 super + x
-  ~/.local/bin/system_actions/powermenu
+  ~/.config/rofi/bin/powermenu
 
 super + shift + s
-  flameshot gui
+  flameshot gui | xclip -selection clipboard -t image/png && killall flameshot
+
 
 super + s
   rofi -show ssh
 
 super + b
-  bitwarden-desktop
+  bitwarden-desktop-bin
 
 super + n
   networkmanager_dmenu

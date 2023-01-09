@@ -41,6 +41,9 @@ alias rel="xrdb merge ~/.Xresources && kill -USR1 $(pidof st)"
 alias open="xdg-open"
 alias upload='curl -F"file=@$(find $HOME -type f | dmenu -i -l 35)" https://0x0.st'
 alias ffmpeg-rec="ffmpeg -f x11grab -y -framerate 30 -s 1920x1080 -i :0.0 -c:v libx264 -preset superfast -crf 18 out.mp4"
+alias emerge="doas emerge --quiet-build --ask --newuse"
+alias mupdf="mupdf -J -X"
+alias irc="ssh irc"
 
 alias xra_laptop="xrandr --output DP1 --off --output DP2 --off --output HDMI1 --off --output HDMI2 --off; notify-send 'xrandr' 'In laptop mode'"
 alias xra_monitor="xrandr --output HDMI2 --auto --left-of eDP1; notify-send 'xrandr' 'In external monitor mode'"

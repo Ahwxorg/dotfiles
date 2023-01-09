@@ -31,15 +31,8 @@ bspc config focus_follows_pointer true
 # fix pointer
 xsetroot -cursor_name left_ptr
 
-declare -a web=(qutebrowser firefox)
-for i in ${web[@]}; do
-    bspc rule -a $i desktop='^1' follow=on focus=on; done
+bspc rule -a qutebrowser desktop='^1' follow=on focus=on
+bspc rule -a firefox desktop='^1' follow=on focus=on
+bspc rule -a surf desktop='^3' follow=on focus=on
+bspc rule -a thunar desktop='^4' follow=on focus=on
 
-declare -a filem=(thunar dolphin)
-for i in ${filem[@]}; do
-    bspc rule -a $i desktop='^2' follow=on focus=on; done
-
-declare -a floats=(kitty arandr \
-Viewnior Pcmanfm feh Nm-connection-editor Matplotlib Yad)
-for i in ${floats[@]}; do
-  bspc rule -a $i state=floating follow=on focus=on; done
