@@ -19,16 +19,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-pkg() {
-  if [[ $1 == "-Syyu" ]]; then
-    doas xbps-install -Su $2
-  elif [[ $1 == "-S" ]]; then
-    doas xbps-install $2
-  elif [[ $1 == "-R" ]]; then
-    doas xbps-remove $2
-  fi
-}
-
 bindkey '^H' backward-kill-word
 bindkey '5~' kill-word
 
@@ -71,7 +61,7 @@ startwm () {
   startx ~/.config/x11/xinitrc-$wm
 }
 
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startx; fi
 
 if [[ -d ~/Downloads ]]; then
   rmdir ~/Downloads
