@@ -1,0 +1,238 @@
+18:18:52.975: Platform: Wayland
+18:18:52.975: CPU Name: AMD Ryzen 5 5600X 6-Core Processor
+18:18:52.975: CPU Speed: 4285.152MHz
+18:18:52.975: Physical Cores: 6, Logical Cores: 12
+18:18:52.975: Physical Memory: 15886MB Total, 988MB Free
+18:18:52.975: Kernel Version: Linux 6.1.11-gentoo-gentoo-autist
+18:18:52.975: Distribution: Gentoo "2.13"
+18:18:52.975: Session Type: wayland
+18:18:52.977: Qt Version: 5.15.8 (runtime), 5.15.8 (compiled)
+18:18:52.977: Portable mode: false
+18:18:53.030: OBS 29.0.2 (linux)
+18:18:53.030: ---------------------------------
+18:18:53.052: ---------------------------------
+18:18:53.052: audio settings reset:
+18:18:53.052: 	samples per sec: 48000
+18:18:53.052: 	speakers:        2
+18:18:53.052: 	max buffering:   960 milliseconds
+18:18:53.052: 	buffering type:  dynamically increasing
+18:18:53.055: ---------------------------------
+18:18:53.055: Initializing OpenGL...
+18:18:53.055: Using EGL/Wayland
+18:18:53.055: Initialized EGL 1.5
+18:18:53.065: Loading up OpenGL on adapter AMD AMD Radeon RX 5700 XT (navi10, LLVM 15.0.7, DRM 3.49, 6.1.11-gentoo-gentoo-autist)
+18:18:53.065: OpenGL loaded successfully, version 4.6 (Core Profile) Mesa 23.0.0-rc4, shading language 4.60
+18:18:53.154: ---------------------------------
+18:18:53.154: video settings reset:
+18:18:53.154: 	base resolution:   1920x1080
+18:18:53.154: 	output resolution: 1920x1080
+18:18:53.154: 	downscale filter:  Bicubic
+18:18:53.154: 	fps:               60/1
+18:18:53.154: 	format:            NV12
+18:18:53.154: 	YUV mode:          Rec. 709/Partial
+18:18:53.154: NV12 texture support not available
+18:18:53.154: P010 texture support not available
+18:18:53.155: Audio monitoring device:
+18:18:53.155: 	name: Default
+18:18:53.155: 	id: default
+18:18:53.155: ---------------------------------
+18:18:53.164: [pipewire] Available captures:
+18:18:53.164: [pipewire]     - Desktop capture
+18:18:53.169: v4l2loopback not installed, virtual camera disabled
+18:18:53.176: FFmpeg VAAPI H264 encoding not supported
+18:18:53.186: [vlc-video]: VLC 3.0.18 Vetinari found, VLC video source enabled
+18:18:53.186: ---------------------------------
+18:18:53.186:   Loaded Modules:
+18:18:53.186:     vlc-video.so
+18:18:53.186:     text-freetype2.so
+18:18:53.186:     rtmp-services.so
+18:18:53.186:     obs-x264.so
+18:18:53.186:     obs-vst.so
+18:18:53.186:     obs-transitions.so
+18:18:53.186:     obs-outputs.so
+18:18:53.186:     obs-filters.so
+18:18:53.186:     obs-ffmpeg.so
+18:18:53.186:     linux-v4l2.so
+18:18:53.186:     linux-pulseaudio.so
+18:18:53.186:     linux-pipewire.so
+18:18:53.186:     linux-capture.so
+18:18:53.186:     linux-alsa.so
+18:18:53.186:     image-source.so
+18:18:53.186:     frontend-tools.so
+18:18:53.186: ---------------------------------
+18:18:53.186: ==== Startup complete ===============================================
+18:18:53.223: All scene data cleared
+18:18:53.223: ------------------------------------------------
+18:18:53.228: pulse-input: Server name: 'PulseAudio (on PipeWire 0.3.65) 15.0.0'
+18:18:53.228: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+18:18:53.228: pulse-input: Started recording from 'alsa_output.pci-0000_0b_00.4.analog-stereo.monitor' (default)
+18:18:53.228: [Loaded global audio device]: 'Desktop Audio'
+18:18:53.229: pulse-input: Server name: 'PulseAudio (on PipeWire 0.3.65) 15.0.0'
+18:18:53.229: pulse-input: Audio format: s16le, 48000 Hz, 2 channels
+18:18:53.229: pulse-input: Started recording from 'alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone-00.analog-stereo' (default)
+18:18:53.229: [Loaded global audio device]: 'Mic/Aux'
+18:18:53.229: PipeWire initialized
+18:18:53.229: v4l2-input: Start capture from /dev/video0
+18:18:53.229: v4l2-input: Input: 0
+18:18:53.244: v4l2-input: Resolution: 1920x1080
+18:18:53.244: v4l2-input: Pixelformat: BGR3
+18:18:53.244: v4l2-input: Linesize: 5760 Bytes
+18:18:53.244: v4l2-input: Framerate: 60.00 fps
+18:18:53.245: v4l2-input: /dev/video0: select timeout set to 83333 (5x frame periods)
+18:18:53.246: Switched to scene 'Head'
+18:18:53.246: ------------------------------------------------
+18:18:53.246: Loaded scenes:
+18:18:53.246: - scene 'Head':
+18:18:53.246:     - source: 'Video Capture Device (V4L2)' (v4l2_input)
+18:18:53.246: - scene 'Monitor':
+18:18:53.246:     - source: 'Screen Capture (PipeWire) 2' (pipewire-desktop-capture-source)
+18:18:53.246:     - source: 'Video Capture Device (V4L2)' (v4l2_input)
+18:18:53.246: ------------------------------------------------
+18:18:53.267: [pipewire] Screencast session created
+18:18:53.335: v4l2-input: /dev/video0: select timed out
+18:18:53.335: v4l2-input: /dev/video0: failed to log status
+18:18:53.799: adding 21 milliseconds of audio buffering, total audio buffering is now 21 milliseconds (source: Mic/Aux)
+18:18:53.799: 
+18:19:02.740: [pipewire] Asking for desktop
+18:19:02.741: [pipewire] desktop selected, setting up screencast
+18:19:02.744: [pipewire] Server version: 0.3.65
+18:19:02.744: [pipewire] Library version: 0.3.66
+18:19:02.744: [pipewire] Header version: 0.3.65
+18:19:02.744: [pipewire] Created stream 0x562349d32d90
+18:19:02.744: [pipewire] Stream 0x562349d32d90 state: "connecting" (error: none)
+18:19:02.744: [pipewire] Playing stream 0x562349d32d90
+18:19:02.744: [pipewire] Stream 0x562349d32d90 state: "paused" (error: none)
+18:19:02.746: [pipewire] Negotiated format:
+18:19:02.746: [pipewire]     Format: 8 (Spa:Enum:VideoFormat:BGRx)
+18:19:02.746: [pipewire]     Modifier: 0
+18:19:02.746: [pipewire]     Size: 1920x1080
+18:19:02.746: [pipewire]     Framerate: 0/1
+18:19:02.747: [pipewire] Negotiated format:
+18:19:02.747: [pipewire]     Format: 8 (Spa:Enum:VideoFormat:BGRx)
+18:19:02.747: [pipewire]     Modifier: 144115188085734146
+18:19:02.747: [pipewire]     Size: 1920x1080
+18:19:02.747: [pipewire]     Framerate: 0/1
+18:19:02.747: [pipewire] Stream 0x562349d32d90 state: "streaming" (error: none)
+18:19:02.751: Cannot create EGLImage: EGL failed to allocate resources for the requested operation.
+18:19:02.751: [pipewire] Renegotiating stream
+18:19:02.751: [pipewire] Negotiated format:
+18:19:02.751: [pipewire]     Format: 8 (Spa:Enum:VideoFormat:BGRx)
+18:19:02.751: [pipewire]     Modifier: 144115188085734146
+18:19:02.751: [pipewire]     Size: 1920x1080
+18:19:02.751: [pipewire]     Framerate: 0/1
+18:19:02.751: [pipewire] Negotiated format:
+18:19:02.751: [pipewire]     Format: 8 (Spa:Enum:VideoFormat:BGRx)
+18:19:02.751: [pipewire]     Modifier: 144115188084251394
+18:19:02.751: [pipewire]     Size: 1920x1080
+18:19:02.751: [pipewire]     Framerate: 0/1
+18:19:09.989: pulse-input: Server name: 'PulseAudio (on PipeWire 0.3.65) 15.0.0'
+18:19:09.989: pulse-input: Audio format: s16le, 48000 Hz, 2 channels
+18:19:09.989: pulse-input: Started recording from 'alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone-00.analog-stereo' (default)
+18:19:09.991: User added source 'Audio Input Capture (PulseAudio)' (pulse_input_capture) to scene 'Head'
+18:19:14.151: pulse-input: Stopped recording from 'alsa_input.pci-0000_0b_00.4.analog-stereo'
+18:19:14.151: pulse-input: Got 165 packets with 198000 frames
+18:19:14.151: pulse-input: Server name: 'PulseAudio (on PipeWire 0.3.65) 15.0.0'
+18:19:14.151: pulse-input: Audio format: s32le, 48000 Hz, 2 channels
+18:19:14.151: pulse-input: Started recording from 'alsa_input.pci-0000_0b_00.4.analog-stereo'
+18:19:27.587: ---------------------------------
+18:19:27.587: [x264 encoder: 'advanced_video_recording'] preset: veryfast
+18:19:27.588: [x264 encoder: 'advanced_video_recording'] settings:
+18:19:27.588: 	rate_control: CBR
+18:19:27.588: 	bitrate:      20000
+18:19:27.588: 	buffer size:  20000
+18:19:27.588: 	crf:          23
+18:19:27.588: 	fps_num:      60
+18:19:27.588: 	fps_den:      1
+18:19:27.588: 	width:        1920
+18:19:27.588: 	height:       1080
+18:19:27.588: 	keyint:       250
+18:19:27.588: 
+18:19:27.596: ---------------------------------
+18:19:27.596: [FFmpeg aac encoder: 'Track1'] bitrate: 160, channels: 2, channel_layout: 3
+18:19:27.596: 
+18:19:27.598: ==== Recording Start ===============================================
+18:19:27.598: [ffmpeg muxer: 'adv_file_output'] Writing file '/home/ahwx/replays/2023-02-23 18-19-27.mp4'...
+18:19:27.600: Failed to inhibit: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Inhibit” on object at path /org/freedesktop/portal/desktop
+18:19:48.642: [ffmpeg muxer: 'adv_file_output'] Output of file '/home/ahwx/replays/2023-02-23 18-19-27.mp4' stopped
+18:19:48.642: Output 'adv_file_output': stopping
+18:19:48.642: Output 'adv_file_output': Total frames output: 1230
+18:19:48.642: Output 'adv_file_output': Total drawn frames: 1263
+18:19:48.642: ==== Recording Stop ================================================
+18:19:51.845: ==== Shutting down ==================================================
+18:19:51.848: [pipewire] Stream 0x562349d32d90 state: "paused" (error: none)
+18:19:51.848: [pipewire] Stream 0x562349d32d90 state: "unconnected" (error: none)
+18:19:51.849: pulse-input: Stopped recording from 'alsa_output.pci-0000_0b_00.4.analog-stereo.monitor'
+18:19:51.849: pulse-input: Got 2344 packets with 2812800 frames
+18:19:51.849: pulse-input: Stopped recording from 'alsa_input.usb-Blue_Microphones_Yeti_Stereo_Microphone-00.analog-stereo'
+18:19:51.849: pulse-input: Got 2344 packets with 2812800 frames
+18:19:51.862: v4l2-input: /dev/video0: Stopped capture after 1757 frames
+18:19:51.868: pulse-input: Stopped recording from 'alsa_input.pci-0000_0b_00.4.analog-stereo'
+18:19:51.868: pulse-input: Got 1508 packets with 1809600 frames
+18:19:51.868: All scene data cleared
+18:19:51.868: ------------------------------------------------
+18:19:51.912: Freeing OBS context data
+18:19:51.925: == Profiler Results =============================
+18:19:51.925: run_program_init: 317.437 ms
+18:19:51.925:  ┣OBSApp::AppInit: 4.824 ms
+18:19:51.925:  ┃ ┗OBSApp::InitLocale: 1.547 ms
+18:19:51.925:  ┗OBSApp::OBSInit: 288.383 ms
+18:19:51.925:    ┣obs_startup: 1.956 ms
+18:19:51.925:    ┗OBSBasic::OBSInit: 211.555 ms
+18:19:51.925:      ┣OBSBasic::InitBasicConfig: 0.059 ms
+18:19:51.925:      ┣OBSBasic::ResetAudio: 0.1 ms
+18:19:51.925:      ┣OBSBasic::ResetVideo: 103.467 ms
+18:19:51.925:      ┣OBSBasic::InitOBSCallbacks: 0.004 ms
+18:19:51.925:      ┣OBSBasic::InitHotkeys: 0.026 ms
+18:19:51.925:      ┣obs_load_all_modules2: 30.589 ms
+18:19:51.925:      ┃ ┣obs_init_module(frontend-tools.so): 1.432 ms
+18:19:51.925:      ┃ ┣obs_init_module(image-source.so): 0.004 ms
+18:19:51.925:      ┃ ┣obs_init_module(linux-alsa.so): 0.001 ms
+18:19:51.925:      ┃ ┣obs_init_module(linux-capture.so): 0.001 ms
+18:19:51.925:      ┃ ┣obs_init_module(linux-pipewire.so): 1.615 ms
+18:19:51.925:      ┃ ┣obs_init_module(linux-pulseaudio.so): 0.001 ms
+18:19:51.925:      ┃ ┣obs_init_module(linux-v4l2.so): 2.412 ms
+18:19:51.925:      ┃ ┣obs_init_module(obs-ffmpeg.so): 0.259 ms
+18:19:51.925:      ┃ ┃ ┗nvenc_check: 0.014 ms
+18:19:51.925:      ┃ ┣obs_init_module(obs-filters.so): 0.01 ms
+18:19:51.925:      ┃ ┣obs_init_module(obs-outputs.so): 0.002 ms
+18:19:51.925:      ┃ ┣obs_init_module(obs-transitions.so): 0.004 ms
+18:19:51.925:      ┃ ┣obs_init_module(obs-vst.so): 0.002 ms
+18:19:51.925:      ┃ ┣obs_init_module(obs-x264.so): 0.001 ms
+18:19:51.925:      ┃ ┣obs_init_module(rtmp-services.so): 0.872 ms
+18:19:51.925:      ┃ ┣obs_init_module(text-freetype2.so): 0.008 ms
+18:19:51.925:      ┃ ┗obs_init_module(vlc-video.so): 1.709 ms
+18:19:51.925:      ┣OBSBasic::ResetOutputs: 0.317 ms
+18:19:51.925:      ┣OBSBasic::CreateHotkeys: 0.029 ms
+18:19:51.926:      ┣OBSBasic::InitService: 1.376 ms
+18:19:51.926:      ┣OBSBasic::InitPrimitives: 0.085 ms
+18:19:51.926:      ┗OBSBasic::Load: 59.173 ms
+18:19:51.926: obs_hotkey_thread(25 ms): min=0 ms, median=0 ms, max=0.002 ms, 99th percentile=0.001 ms, 100% below 25 ms
+18:19:51.926: audio_thread(Audio): min=0.003 ms, median=0.03 ms, max=1.496 ms, 99th percentile=0.762 ms
+18:19:51.926:  ┗receive_audio: min=0.001 ms, median=0.173 ms, max=1.429 ms, 99th percentile=0.368 ms, 0.357738 calls per parent call
+18:19:51.926:    ┣buffer_audio: min=0 ms, median=0.001 ms, max=0.005 ms, 99th percentile=0.002 ms
+18:19:51.926:    ┗do_encode: min=0.024 ms, median=0.171 ms, max=1.427 ms, 99th percentile=0.366 ms
+18:19:51.926:      ┣encode(Track1): min=0.022 ms, median=0.169 ms, max=1.425 ms, 99th percentile=0.365 ms
+18:19:51.926:      ┗send_packet: min=0 ms, median=0.001 ms, max=0.026 ms, 99th percentile=0.021 ms
+18:19:51.926: obs_graphics_thread(16.6667 ms): min=0.025 ms, median=0.392 ms, max=16.458 ms, 99th percentile=1.251 ms, 100% below 16.667 ms
+18:19:51.926:  ┣tick_sources: min=0 ms, median=0.002 ms, max=7.241 ms, 99th percentile=0.005 ms
+18:19:51.926:  ┣output_frame: min=0.021 ms, median=0.33 ms, max=9.284 ms, 99th percentile=1.109 ms
+18:19:51.926:  ┃ ┣gs_context(video->graphics): min=0.021 ms, median=0.15 ms, max=9.284 ms, 99th percentile=0.714 ms
+18:19:51.926:  ┃ ┃ ┣render_video: min=0.004 ms, median=0.073 ms, max=4.346 ms, 99th percentile=0.643 ms
+18:19:51.926:  ┃ ┃ ┃ ┣render_main_texture: min=0.003 ms, median=0.043 ms, max=4.047 ms, 99th percentile=0.617 ms
+18:19:51.926:  ┃ ┃ ┃ ┣render_convert_texture: min=0.012 ms, median=0.016 ms, max=3.351 ms, 99th percentile=0.025 ms, 0.358298 calls per parent call
+18:19:51.926:  ┃ ┃ ┃ ┗stage_output_texture: min=0.005 ms, median=0.007 ms, max=0.156 ms, 99th percentile=0.011 ms, 0.358298 calls per parent call
+18:19:51.926:  ┃ ┃ ┣gs_flush: min=0.001 ms, median=0.027 ms, max=4.931 ms, 99th percentile=0.043 ms
+18:19:51.926:  ┃ ┃ ┗download_frame: min=0 ms, median=0.022 ms, max=0.086 ms, 99th percentile=0.039 ms, 0.358298 calls per parent call
+18:19:51.926:  ┃ ┗output_video_data: min=0.274 ms, median=0.369 ms, max=1.372 ms, 99th percentile=0.459 ms, 0.358014 calls per parent call
+18:19:51.926:  ┗render_displays: min=0.001 ms, median=0.058 ms, max=16.371 ms, 99th percentile=0.188 ms
+18:19:51.926: video_thread(video): min=0.71 ms, median=0.795 ms, max=5.54 ms, 99th percentile=2.606 ms
+18:19:51.926:  ┗receive_video: min=0.709 ms, median=0.795 ms, max=5.54 ms, 99th percentile=2.606 ms
+18:19:51.926:    ┗do_encode: min=0.709 ms, median=0.794 ms, max=5.539 ms, 99th percentile=2.605 ms
+18:19:51.926:      ┣encode(advanced_video_recording): min=0.698 ms, median=0.782 ms, max=5.048 ms, 99th percentile=2.557 ms
+18:19:51.926:      ┗send_packet: min=0.002 ms, median=0.012 ms, max=1.846 ms, 99th percentile=0.021 ms
+18:19:51.926: =================================================
+18:19:51.926: == Profiler Time Between Calls ==================
+18:19:51.926: obs_hotkey_thread(25 ms): min=25.008 ms, median=25.054 ms, max=25.077 ms, 100% within ±2% of 25 ms (0% lower, 0% higher)
+18:19:51.926: obs_graphics_thread(16.6667 ms): min=16.622 ms, median=16.667 ms, max=16.711 ms, 100% within ±2% of 16.667 ms (0% lower, 0% higher)
+18:19:51.926: =================================================
+18:19:51.930: Number of memory leaks: 0

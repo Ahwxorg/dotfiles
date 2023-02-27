@@ -2,16 +2,11 @@
     "layer": "top",
     "position": "top",
     "height": 0,
-    "modules-left": ["clock", "wlr/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": [
-        "tray",
-        "custom/caffeine",
-        "network",
-        "backlight",
-        "pulseaudio",
-        "battery"
-    ],
+    "modules-left": ["tray", "wlr/workspaces"],
+    "modules-center": [],
+/*    "modules-center": ["hyprland/window"],*/
+    "modules-right": ["clock"],
+    
 
     "hyprland/window": {
         "format": "{}"
@@ -34,44 +29,17 @@
             "10": []
         }
     },
-    "custom/caffeine": {
-        "exec": "~/.config/waybar/scripts/caffeine.sh",
-        "return-type": "json",
-        "interval": 3,
-        "format-icons": ["﯈", ""],
-        "format": "{icon}"
-    },
    "tray": {
         "icon-size": 13,
         "spacing": 10
     },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", ""],
-        "on-scroll-up": "brightnessctl set 1%+",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "min-length": 6
-    },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
-    },
-    "clock": {
+   "clock": {
         "format": "{: %R   %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "network": {
         "format-wifi": "直 {essid}",
-        "format-ethernet": " {essid}",
+        "format-ethernet": " ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "睊 Disconnected",
         "tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
