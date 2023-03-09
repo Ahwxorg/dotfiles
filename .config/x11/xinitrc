@@ -1,6 +1,7 @@
-sxhkd &
 picom &
+wallpaper-pywal &
 dunst &
-polybar &
+~/.local/bin/bar &
+sxhkd &
 
-exce bspwm
+dwm
