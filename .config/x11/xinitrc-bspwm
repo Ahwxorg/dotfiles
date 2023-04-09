@@ -1,6 +1,0 @@
-sxhkd &
-picom &
-dunst &
-polybar &
-
-exec bspwm

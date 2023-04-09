@@ -1,4 +1,0 @@
-#!/bin/bash 
-#
-echo "[ 墳 $(pamixer --get-volume)% ] "
-

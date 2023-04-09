@@ -1,1 +1,0 @@
-notify-send "RAM Usage" $(free -h | grep Mem: | cut -d " " -f20)

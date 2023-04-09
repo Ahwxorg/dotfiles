@@ -1,9 +1,0 @@
-#!/bin/sh
-# A dmenu wrapper script for system functions.
-
-case "$(printf "powermenu\nupdate\npowermenu" | dmenu -l 25 -i -p 'Action: ')" in
-	'definition') /home/ahwx/.local/bin/system_actions/clip-definition ;;
-	'powermenu') /home/ahwx/.local/bin/system_actions/powermenu ;;
-  'update') st -e doas xbps-install -Su; pacman -Syyu ;;
-	*) exit 1 ;;
-esac
