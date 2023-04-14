@@ -1,0 +1,6 @@
+#!/bin/sh
+
+convert "$1" ~/.local/share/bg.png
+xwallpaper --zoom ~/.local/share/bg.png
+# swaybg -m fill -i ~/.local/share/bg.png
+pywalfox update

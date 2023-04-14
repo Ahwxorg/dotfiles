@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+killall -q polybar
+sleep 1
+~/.config/polybar/launch_polybar.sh
+
+killall -q picom
+setsid picom &

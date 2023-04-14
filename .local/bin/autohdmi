@@ -1,0 +1,35 @@
+#!/bin/bash
+
+export username="ahwx"
+export DISPLAY=:0
+export XAUTHORITY=/home/$username/.Xauthority
+
+set -e
+MONITOR='HDMI-A-2'
+
+function wait_for_monitor {
+    xrandr | grep $MONITOR | grep '\bconnected'
+    while [ $? -ne 0 ]; do
+            logger -t "waiting for 100ms"
+            echo "waiting for 100ms"
+            sleep 0.1
+            xrandr | grep $MONITOR | grep '\bconnected'
+    done
+ }
+
+EXTERNAL_MONITOR_STATUS=$(cat /sys/class/drm/card0-HDMI-A-2/status)
+# EXTERNAL_MONITOR_STATUS=$(cat /sys/class/drm/card0-$MONITOR/status )
+if [ $EXTERNAL_MONITOR_STATUS  == "connected" ]; then
+    sleep 2
+    xrandr --output HDMI-2 --auto --left-of eDP-1; notify-send 'xrandr' 'In external monitor mode'
+    # /home/$username/.local/bin/i3plug.py restore
+    ~/.local/bin/dock
+    notify-send 'Auto docking' 'In external monitor mode'
+else
+    # /home/$username/.local/bin/i3plug.py save
+    xrandr --output $MONITOR --off
+    ~/.local/bin/dock
+    notify-send 'Auto docking' 'In laptop mode'
+fi
+
+xwallpaper --zoom ~/.local/share/bg.jpg
