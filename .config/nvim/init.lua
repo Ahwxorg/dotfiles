@@ -1,0 +1,5 @@
+require('plugins')
+require('keybindings')
+require('options')
+require('notifier-config')
+require('colorscheme')
