@@ -12,7 +12,7 @@ exec --no-startup-id sxhkd &
 exec --no-startup-id xwallpaper --zoom ~/.local/share/bg.jpg &
 exec --no-startup-id picom &
 exec --no-startup-id xfce4-power-manager --daemon &
-exec --no-startup-id "/home/ahwx/.config/polybar/launch_polybar.sh" &
+exec --no-startup-id /home/ahwx/.config/polybar/launch_polybar.sh &
 # exec --no-startup-id blueman-applet &
 
 # Use pactl to adjust volume in PulseAudio.
@@ -31,6 +31,8 @@ bindsym $mod+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-
 bindsym $mod+Shift+w exec walp
 for_window [ title="sxiv" ] floating enable
 for_window [ title="Write: (no subject) - Thunderbird" ] floating enable
+bindsym $mod+Shift+k exec kdeconnect-app
+assign [class="(?i)KDE Connect"] → $music
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+d exec qutebrowser
 bindsym $mod+Shift+c exec chromium
