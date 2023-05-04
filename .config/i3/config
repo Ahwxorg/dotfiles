@@ -1,19 +1,20 @@
 # i3 config file
 
-set $mod Mod4
-set $mod2 Mod1
+set $mod2 Mod4
+set $mod Mod1
 
 font GohuFont Nerd Font Mono 12
 
-exec xrdb merge ~/.config/xresources/Xresources
+exec --no-startup-id kitty
+exec --no-startup-id walp
 exec --no-startup-id xautolock -detectsleep -time 15 -locker /home/ahwx/.local/bin/blur-lock &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id sxhkd &
 exec --no-startup-id xwallpaper --zoom ~/.local/share/bg.jpg &
 exec --no-startup-id picom &
+exec --no-startup-id dunst &
 exec --no-startup-id xfce4-power-manager --daemon &
 exec --no-startup-id /home/ahwx/.config/polybar/launch_polybar.sh &
-# exec --no-startup-id blueman-applet &
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -24,7 +25,9 @@ exec --no-startup-id /home/ahwx/.config/polybar/launch_polybar.sh &
 
 bindsym $mod+Return exec kitty
 bindsym $mod+q kill
-bindsym $mod+d exec ~/.config/rofi/bin/launcher
+bindsym $mod+Shift+n exec networkmanager_dmenu
+bindsym $mod+d exec dmenu_run -l 25
+bindsym $mod+Shift+a exec ~/.local/bin/qrlipboard
 bindsym $mod+p exec ~/.config/rofi/bin/powermenu
 bindsym $mod+l exec ~/.local/bin/blur-lock
 bindsym $mod+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
@@ -34,7 +37,7 @@ for_window [ title="Write: (no subject) - Thunderbird" ] floating enable
 bindsym $mod+Shift+k exec kdeconnect-app
 assign [class="(?i)KDE Connect"] → $music
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Shift+d exec qutebrowser
+bindsym $mod+Shift+q exec qutebrowser
 bindsym $mod+Shift+c exec chromium
 bindsym $mod+Shift+s exec signal-desktop
 assign [class="(?i)signal"] → $signal
@@ -50,7 +53,7 @@ bindsym $mod+e exec thunar
 bindsym $mod+Shift+bracketleft move container to output left
 bindsym $mod+Shift+bracketright move container to output right
 bindsym $mod+Shift+backslash exec ~/.local/bin/autohdmi
-bindsym $mod+Shift+x exec xrandr --auto && arandr
+bindsym $mod+Shift+x exec xrandr --auto && arandr && dock
 
 
 bindsym $mod+s exec flameshot gui
@@ -107,6 +110,7 @@ set $server "server"
 set $mov "mov"
 set $docs "docs"
 set $signal "signal"
+set $phone "phone"
 set $meuk "meuk"
 
 # switch to workspace
@@ -127,7 +131,7 @@ bindsym $mod+F4 workspace $server
 bindsym $mod+F5 workspace $mov
 bindsym $mod+F6 workspace $docs
 bindsym $mod+F7 workspace $signal
-bindsym $mod+F8 workspace $meuk
+bindsym $mod+F8 workspace $phone
 bindsym $mod+F9 workspace $meuk
 bindsym $mod+F10 workspace $meuk
 bindsym $mod+F11 workspace $meuk
@@ -151,7 +155,7 @@ bindsym $mod+Shift+F4 move container to workspace $server
 bindsym $mod+Shift+F5 move container to workspace $mov
 bindsym $mod+Shift+F6 move container to workspace $docs
 bindsym $mod+Shift+F7 move container to workspace $signal
-bindsym $mod+Shift+F8 move container to workspace $meuk
+bindsym $mod+Shift+F8 move container to workspace $phone
 bindsym $mod+Shift+F9 move container to workspace $meuk
 bindsym $mod+Shift+F10 move container to workspace $meuk
 bindsym $mod+Shift+F11 move container to workspace $meuk
@@ -160,7 +164,7 @@ bindsym $mod+Shift+F12 move container to workspace $meuk
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -231,6 +235,9 @@ gaps outer 10
 #      }
 #    }
 
-# start these programs as well
-
+# bar {
+#   status_command i3blocks -c ~/.i3/blocks/blocks.conf
+#   position bottom
+#   font pango:Dina 9
+# }
 

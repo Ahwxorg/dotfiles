@@ -1,0 +1,8 @@
+XF86AudioMute
+	pamixer -t; notify-send -r 9992 -u low "" "Volume mute toggled."
+
+XF86AudioLowerVolume
+	pamixer -d 5; notify-send -r 9992 -u low "" "Volume is at $(pamixer --get-volume)%."
+
+XF86AudioRaiseVolume
+	pamixer -i 5; notify-send -r 9992 -u low "" "Volume is at $(pamixer --get-volume)%."
