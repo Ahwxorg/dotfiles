@@ -2,7 +2,7 @@ export ZSH="$HOME/.config/zsh"
 export THEME="/home/ahwx/.config/zsh/themes/liv.zsh-theme"
 export FZF_DEFAULT_COMMAND="find -L"
 export PATH="${PATH}:${HOME}/.local/bin/"
-export DISABLE_AUTO_UPDATE=true
+export DISABLE_AUTO_UPDATE=false
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 
@@ -11,7 +11,6 @@ ZSH_THEME="liv"
 ENABLE_CORRECTION="true"
 
 plugins=(
-  git
   zsh-syntax-highlighting 
   zsh-autosuggestions
   z
@@ -20,6 +19,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias v="nvim"
 alias vim="nvim"
 alias nv="nvim"
 alias ls="exa -l"
@@ -29,7 +29,7 @@ alias la="exa -la"
 alias zshrc="nvim ~/.zshrc"
 alias rel="xrdb merge ~/.config/Xresources && kill -USR1 $(pidof st)"
 alias open="xdg-open"
-alias upload='curl -F"file=@$(find $HOME -type f | dmenu -i -l 35)" https://0x0.st'
+alias upload='curl -F"file=@$(find $HOME -type f | fzf)" https://0x0.st'
 alias ffmpeg-rec="ffmpeg -f x11grab -y -framerate 30 -s 1920x1080 -i :0.0 -c:v libx264 -preset superfast -crf 18 out.mp4"
 alias mupdf="mupdf -J -X"
 alias emerge="doas emerge"
@@ -50,6 +50,11 @@ alias ga="git add ."
 alias gcm="git commit -m"
 alias gph="git push -u origin main"
 
+gpa() {
+  for remote in $(cat .git/config | grep 'remote "' | cut -d '"' -f2)
+    git push -u $remote $1
+}
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startx; fi
 
 if [[ -d ~/Downloads ]]; then
@@ -62,12 +67,12 @@ fi
 
 complete -cf doas
 
-# rel
-
-if [ -e /home/ahwx/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ahwx/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
 bindkey -v
 bindkey '^H' backward-kill-word
 bindkey '5~' kill-word
 
+zstyle ':completion:*' menu select
+
 compinit
+
+export TERM="xterm-kitty"

@@ -51,6 +51,8 @@ return require('packer').startup({
     -- use { 'rose-pine/neovim', as = 'rose-pine' } -- switched to catppuccin since it looks a little better but ehh
     use { "folke/noice.nvim", config = function() require("noice").setup({}) end, requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", } }
     use { "vigoux/notifier.nvim" }
+    use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end})
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 end,
   config = {
     display = {
