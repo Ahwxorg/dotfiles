@@ -25,9 +25,9 @@ exec --no-startup-id sshfs eclipse:/mnt/big/general ~/server &
 bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 bindsym $mod+Shift+n exec networkmanager_dmenu
-bindsym $mod+d exec dmenu_run -l 25
+bindsym $mod+d exec rofi -show drun
 # bindsym $mod+Shift+a exec ~/.local/bin/qrlipboard
-bindsym $mod+p exec ~/.config/rofi/bin/powermenu
+bindsym $mod+p exec /home/ahwx/.config/rofi/powermenu/powermenu
 bindsym $mod2+l exec ~/.local/bin/blur-lock
 bindsym $mod+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 bindsym $mod+Shift+w exec walp
