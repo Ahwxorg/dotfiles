@@ -23,6 +23,8 @@ exec --no-startup-id sshfs eclipse:/mnt/big/general ~/server &
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 bindsym $mod+Return exec kitty
+for_window [class="float"] floating enable
+bindsym $mod+Shift+Return exec kitty --class float
 bindsym $mod+q kill
 bindsym $mod+Shift+n exec networkmanager_dmenu
 bindsym $mod+d exec rofi -show drun
