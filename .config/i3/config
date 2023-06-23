@@ -6,14 +6,14 @@ set $mod Mod1
 font GohuFont Nerd Font Mono 12
 
 exec --no-startup-id wallpaper-pywal
-exec --no-startup-id xautolock -detectsleep -time 15 -locker /home/ahwx/.local/bin/blur-lock &
+exec --no-startup-id xautolock -detectsleep -time 15 -locker betterlockscreen -l &
 exec --no-startup-id greenclip daemon &
 exec --no-startup-id sxhkd &
 exec --no-startup-id picom &
 exec --no-startup-id dunst &
 exec --no-startup-id xfce4-power-manager --daemon &
 exec --no-startup-id /home/ahwx/.config/polybar/launch_polybar.sh &
-exec --no-startup-id sshfs eclipse:/mnt/big/general ~/server &
+# exec --no-startup-id sshfs eclipse:/mnt/big/general ~/server &
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -52,17 +52,16 @@ for_window [ title="Write: (no subject) - Thunderbird" ] floating enable
 assign [class="(?i)Thunderbird"] → $ws11
 bindsym $mod+e exec thunar
 bindsym $mod+Shift+b exec notify-send "Battery" "$(acpi)"
+# bindsym $mod+s exec flameshot gui
+bindsym $mod+s exec maim --select | xclip -sel c -t image/png
 
 # dock mode settings
 
 bindsym $mod+Shift+bracketleft move container to output left
 bindsym $mod+Shift+bracketright move container to output right
 bindsym $mod+Shift+backslash exec ~/.local/bin/autohdmi
-bindsym $mod+Shift+x exec xrandr --auto && dock
+bindsym $mod+Shift+x exec xrandr --auto && sleep 5 && dock
 bindsym $mod+Shift+a exec arandr && dock
-
-
-bindsym $mod+s exec flameshot gui
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -121,13 +120,14 @@ set $ws8 8
 set $ws9 9
 set $ws10 10
 set $ws11 11:mail
-set $ws12 12:music
+set $ws12 12:notes
 set $ws13 13:chat
 set $ws14 14:vpn
-set $ws15 15:mov
+set $ws15 15:media
 set $ws16 16:docs
 set $ws17 17:signal
 set $ws18 18:phone
+set $ws19 19:bluetooth
 set $meuk "meuk"
 
 # commented because those are not formatted beyond $ws9 and thus if i open ws15 after $ws18, it shows up as a higher one instead of a lower one
@@ -170,7 +170,7 @@ bindsym $mod+F5 workspace $ws15
 bindsym $mod+F6 workspace $ws16
 bindsym $mod+F7 workspace $ws17
 bindsym $mod+F8 workspace $ws18
-bindsym $mod+F9 workspace $meuk
+bindsym $mod+F9 workspace $ws19
 bindsym $mod+F10 workspace $meuk
 bindsym $mod+F11 workspace $meuk
 bindsym $mod+F12 workspace $meuk
@@ -194,7 +194,7 @@ bindsym $mod+Shift+F5 move container to workspace $ws15
 bindsym $mod+Shift+F6 move container to workspace $ws16
 bindsym $mod+Shift+F7 move container to workspace $ws17
 bindsym $mod+Shift+F8 move container to workspace $ws18
-bindsym $mod+Shift+F9 move container to workspace $meuk
+bindsym $mod+Shift+F9 move container to workspace $ws19
 bindsym $mod+Shift+F10 move container to workspace $meuk
 bindsym $mod+Shift+F11 move container to workspace $meuk
 bindsym $mod+Shift+F12 move container to workspace $meuk

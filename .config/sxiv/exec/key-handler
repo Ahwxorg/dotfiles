@@ -7,5 +7,6 @@ do
     "w") setbg "$file" ;;
     "u") uploadfile "$file" ;;
     "x") mv "$file" ~/pix/wall/old-collection/ ;;
+    "c") mkdir -p /home/ahwx/temp-sxiv; cp "$file" /home/ahwx/temp-sxiv/ ;;
   esac
 done
