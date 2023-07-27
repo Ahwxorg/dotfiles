@@ -4,16 +4,30 @@
 
 local M = {}
 
+M.add = {
+  NvimTreeOpenedFolderName = { fg = "green", bold = true },
+}
+
 ---@type Base46HLGroupsList
 M.override = {
   Comment = {
     italic = true,
   },
+  NvDashAscii = {
+    bg = "NONE",
+    fg = "baby_pink",
+  },
+  NvDashButtons = {
+    bg = "NONE",
+    fg = "grey",
+    italic = true,
+  },
+  Folded = { bg = "NONE" },
 }
 
 ---@type HLTable
 M.add = {
-  NvimTreeOpenedFolderName = { fg = "green", bold = true },
+  FoldColumn = { bg = "black", bold = true },
 }
 
 return M

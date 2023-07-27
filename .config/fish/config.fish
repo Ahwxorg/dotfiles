@@ -16,11 +16,11 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias :q "exit"
 alias g git
-alias notes "nvim ~/dox/todo.md"
-alias todo "nvim ~/dox/todo.md"
-alias emerge "doas emerge"
+alias notes "nvim ~/Documents/todo.md"
+alias todo "nvim ~/Documents/todo.md"
 alias irc "ssh irc"
 alias life "kitty -e mpv ~/down/Life_Could_Be_A_Dream.mp3"
+alias ip "curl https://ip-api.io/json | jq .ip | pbcopy"
 
 command -qv nvim && alias vim nvim && alias v nvim && alias vi nvim && alias nv nvim
 abbr fishconf "nvim ~/.config/fish/config.fish"
@@ -39,15 +39,18 @@ bind -k backspace 'backward-kill-word'
   # control delete
 bind \e\[3\;5~ 'kill-word'
   # search directory
-bind \cF 'fzf | xclip -sel c'
+bind \cF 'fzf | pbcopy'
   # search history
-bind \cR 'history | fzf | xclip -sel c'
+bind \cR 'history | fzf | pbcopy'
 
 set -gx EDITOR nvim
 
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
+
+# Rust
+source "$HOME/.cargo/env_fish"
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH

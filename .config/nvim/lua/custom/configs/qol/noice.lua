@@ -10,6 +10,8 @@ require("noice").setup({
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
+      ["config.lsp.hover.enabled"] = false,
+      ["config.lsp.signature.enabled"] = false,
     },
   },
   -- you can enable a preset for easier configuration
