@@ -14,6 +14,10 @@ alt + shift - r : \
     skhd --reload
 
 
+alt + shift - r : \
+    yabai --restart-service; \
+    skhd --restart-service
+
 ####### Application Blacklists #############
 #.blacklist [
 #  "IntelliJ IDEA"
