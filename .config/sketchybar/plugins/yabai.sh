@@ -33,7 +33,7 @@ window_state() {
                   || args+=(label="$LABEL" label.width=40)
 
   [ -z "$ICON" ] && args+=(icon.width=0) \
-                 || args+=(icon="$ICON" icon.width=30)
+                 || args+=(icon="$ICON" icon.width=20)
 
   sketchybar -m "${args[@]}"
 }
@@ -49,7 +49,7 @@ windows_on_spaces () {
   do
     for space in $line
     do
-      icon_strip=" "
+      icon_strip=""
       apps=$(yabai -m query --windows --space $space | jq -r ".[].app")
       if [ "$apps" != "" ]; then
         while IFS= read -r app; do
