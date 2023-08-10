@@ -1,3 +1,8 @@
+if status is-interactive
+and not set -q TMUX
+    exec tmux
+end
+
 set fish_greeting ""
 
 set -gx TERM xterm-256color
@@ -15,21 +20,23 @@ alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
 alias :q "exit"
-alias g git
+alias doas "sudo"
 alias notes "nvim ~/Documents/todo.md"
 alias todo "nvim ~/Documents/todo.md"
 alias irc "ssh irc"
 alias life "kitty -e mpv ~/down/Life_Could_Be_A_Dream.mp3"
 alias ip "curl https://ip-api.io/json | jq .ip | pbcopy"
+alias fishconf "nvim ~/.config/fish/config.fish"
+alias tmuxconf "nvim ~/.config/tmux/tmux.conf"
+alias nvimconf "nvim ~/.config/nvim/lua/custom/init.lua"
+alias termconf "nvim ~/.config/alacritty/alacritty.yml"
 
 command -qv nvim && alias vim nvim && alias v nvim && alias vi nvim && alias nv nvim
-abbr fishconf "nvim ~/.config/fish/config.fish"
-abbr nvimconf "nvim ~/.config/nvim/lua/custom/init.lua"
-abbr tmuxconf "nvim ~/.config/tmux/tmux.conf"
-abbr kittyconf "nvim ~/.config/kitty/kitty.conf"
 abbr mkdir 'mkdir -p'
-abbr doasmkdir 'doas mkdir -p'
 abbr pythonrm 'python; rm .python_history'
+abbr g "git"
+abbr b "brew"
+abbr y "yarn"
 
 # keybindings
   # bind \cl 'clear'
@@ -39,7 +46,7 @@ bind -k backspace 'backward-kill-word'
   # control delete
 bind \e\[3\;5~ 'kill-word'
   # search directory
-bind \cF 'fzf | pbcopy'
+bind \cF 'nvim $(fzf)'
   # search history
 bind \cR 'history | fzf | pbcopy'
 

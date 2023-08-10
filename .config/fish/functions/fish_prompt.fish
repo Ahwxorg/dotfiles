@@ -1,8 +1,8 @@
 function fish_prompt
     if test $status != 0
-        echo (set_color red)"•"(set_color blue) "$hostname ~ "(set_color normal)
+        echo (set_color red)"•"(set_color blue) "$(hostname | cut -d. -f1) ~ "(set_color normal)
     else
-        echo (set_color green)"•"(set_color blue) "$hostname ~ "(set_color normal)
+        echo (set_color green)"•"(set_color blue) "$(hostname | cut -d. -f1) ~ "(set_color normal)
     end
 end
 
