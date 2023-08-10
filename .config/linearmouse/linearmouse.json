@@ -3,7 +3,7 @@
   "schemes" : [
     {
       "pointer" : {
-        "disableAcceleration" : false
+        "disableAcceleration" : true
       },
       "if" : {
         "device" : {
@@ -24,6 +24,21 @@
           "productID" : "0x36",
           "category" : "mouse",
           "vendorID" : "0x258a"
+        }
+      }
+    },
+    {
+      "pointer" : {
+        "acceleration" : 20,
+        "speed" : 0.25,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "productName" : "USB Receiver",
+          "productID" : "0xc547",
+          "category" : "mouse",
+          "vendorID" : "0x46d"
         }
       }
     }
