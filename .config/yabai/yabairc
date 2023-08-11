@@ -49,11 +49,11 @@ yabai -m config external_bar               all:35:0     \
                 mouse_action2              resize       \
                 mouse_drop_action          swap         \
                                                         \
-                top_padding                10           \
-                bottom_padding             4            \
-                left_padding               4            \
-                right_padding              4            \
-                window_gap                 6
+                top_padding                20           \
+                bottom_padding             8            \
+                left_padding               8            \
+                right_padding              8            \
+                window_gap                 12
 
 # Exclude problematic apps from being managed:
 yabai -m rule --add app="^(Settings|Calculator|System Preferences|System Settings|Software Update|Archive Utility|Finder)$" manage=off
