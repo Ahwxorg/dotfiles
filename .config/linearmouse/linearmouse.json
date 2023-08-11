@@ -3,7 +3,7 @@
   "schemes" : [
     {
       "pointer" : {
-        "disableAcceleration" : true
+        "disableAcceleration" : false
       },
       "if" : {
         "device" : {

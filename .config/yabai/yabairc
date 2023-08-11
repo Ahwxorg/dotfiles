@@ -24,8 +24,8 @@ yabai -m space 10 --label mail
 
 yabai -m config external_bar               all:35:0     \
                 window_border              on           \
+                focus_follows_mouse        autofocus    \
                 mouse_follows_focus        on           \
-                focus_follows_mouse        on           \
                 window_zoom_persist        off          \
                 window_placement           second_child \
                 window_topmost             on           \
