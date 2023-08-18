@@ -31,7 +31,7 @@ update() {
     PADDING=0
 
     if [ "${repo}" = "" ] && [ "${title}" = "" ]; then
-      repo="Note"
+      repo="GitHub"
       title="No new notifications"
     fi 
     case "${type}" in

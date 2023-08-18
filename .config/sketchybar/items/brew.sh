@@ -4,6 +4,7 @@
 # e.g. via function in .zshrc
 
 brew=(
+  update_freq=180
   icon=􀐛
   label=?
   padding_right=10
