@@ -30,6 +30,9 @@ alias fishconf "nvim ~/.config/fish/config.fish"
 alias tmuxconf "nvim ~/.config/tmux/tmux.conf"
 alias nvimconf "nvim ~/.config/nvim/lua/custom/init.lua"
 alias termconf "nvim ~/.config/alacritty/alacritty.yml"
+alias .. "cd .."
+alias ... "cd ../.."
+alias .... "cd ../../.."
 
 command -qv nvim && alias vim nvim && alias v nvim && alias vi nvim && alias nv nvim
 abbr mkdir 'mkdir -p'
