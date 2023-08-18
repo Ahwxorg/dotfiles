@@ -1,19 +1,29 @@
 ####### Shortcut Hotkeys #############
-# open apps
+# open terminal
 alt - return : open -na /Applications/Alacritty.app/Contents/MacOS/alacritty
 alt + shift - e : open -na /Applications/Element.app/Contents/MacOS/Element
 alt + shift - s : open -na /Applications/Signal.app/Contents/MacOS/Signal
 alt + shift - f : open -na /Applications/Firefox.app/Contents/MacOS/firefox
 alt + shift - h : open -na /Applications/Alacritty.app/Contents/MacOS/alacritty -e htop
 alt + shift - t : open -na Mail
-alt + shift - n : open -na /Applications/Alacritty.app/Contents/MacOS/alacritty -e newsboat
+alt + shift - d : open -na /Users/ahwx/.local/bin/definition_from_clipboard
 
 # restart Yabi, SpaceBar, and SKHD
 alt + shift - r : \
+    launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"; \
+    skhd --reload
+
+
+alt + shift - r : \
     yabai --restart-service; \
     skhd --restart-service
-    brew services restart sketchybar
-#
+
+####### Application Blacklists #############
+#.blacklist [
+#  "IntelliJ IDEA"
+#]
+
+
 ####### Window Management Hotkeys #############
 # change focus
 alt - h : yabai -m window --focus west
@@ -167,7 +177,7 @@ alt + ctrl - s : yabai -m window --toggle sticky
 alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
-# alt + shift - f : yabai -m window --toggle native-fullscreen
+alt + shift - f : yabai -m window --toggle native-fullscreen
 
 # focus monitor
 alt + ctrl - x  : yabai -m display --focus recent
