@@ -1,12 +1,11 @@
 ####### Shortcut Hotkeys #############
 # open terminal
-alt - return : open -na /Applications/Alacritty.app/Contents/MacOS/alacritty
+alt - return : open -na /Applications/WezTerm.app/Contents/MacOS/wezterm
 alt + shift - e : open -na /Applications/Element.app/Contents/MacOS/Element
 alt + shift - s : open -na /Applications/Signal.app/Contents/MacOS/Signal
 alt + shift - f : open -na /Applications/Firefox.app/Contents/MacOS/firefox
-alt + shift - h : open -na /Applications/Alacritty.app/Contents/MacOS/alacritty -e htop
+alt + shift - h : open -na /Applications/WezTerm.app/Contents/MacOS/wezterm -e htop
 alt + shift - t : open -na Mail
-alt + shift - d : open -na /Users/ahwx/.local/bin/definition_from_clipboard
 
 # restart Yabi, SpaceBar, and SKHD
 alt + shift - r : \

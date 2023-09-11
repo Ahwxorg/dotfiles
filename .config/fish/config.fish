@@ -63,7 +63,7 @@ set -gx PATH ~/.local/bin $PATH
 source "$HOME/.cargo/env_fish"
 
 # NodeJS
-set -gx PATH node_modules/.bin $PATH
+set -gx PATH node_modules/.bin /opt/local/bin $PATH
 
 switch (uname)
   case Darwin
