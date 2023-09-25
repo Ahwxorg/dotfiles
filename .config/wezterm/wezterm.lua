@@ -24,6 +24,7 @@ config.font = wezterm.font_with_fallback({
 })
 
 config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
+config.window_background_opacity = 0.8
 config.send_composed_key_when_left_alt_is_pressed = true
 config.font_size = 15.0
 config.cell_width = 0.88888888887 -- 8 / 9 rounded down

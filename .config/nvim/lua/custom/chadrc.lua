@@ -12,12 +12,11 @@ M.ui = {
   hl_add = highlights.add,
   transparency = false,
   lsp_semantic_tokens = true, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
-
+  
   -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
   extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
 
-  -- cmp themeing
-  cmp = {
+    cmp = {
     icons = true,
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
@@ -81,5 +80,3 @@ M.plugins = "custom.plugins"
 M.mappings = require "custom.mappings"
 
 return M
-
-

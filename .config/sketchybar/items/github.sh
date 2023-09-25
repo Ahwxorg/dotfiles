@@ -23,7 +23,7 @@ github_template=(
   icon.background.y_offset=-12
 )
 
-sketchybar --add item github.bell right                 \
+sketchybar --add item github.bell left                  \
            --set github.bell "${github_bell[@]}"        \
            --subscribe github.bell  mouse.entered       \
                                     mouse.exited        \

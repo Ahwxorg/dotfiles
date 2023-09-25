@@ -1,21 +1,26 @@
 #!/bin/bash
 
-source "$CONFIG_DIR/colors.sh"
+source "$HOME/.config/icons.sh"
+source "$HOME/.config/colors.sh"
 
-COUNT="$(brew outdated | wc -l | tr -d ' ')"
+COUNT=$(brew outdated | wc -l | tr -d ' ')
 
 COLOR=$RED
 
 case "$COUNT" in
-  [3-5][0-9]) COLOR=$ORANGE
+[3-5][0-9])
+  COLOR=$ORANGE
   ;;
-  [1-2][0-9]) COLOR=$YELLOW
+[1-2][0-9])
+  COLOR=$YELLOW
   ;;
-  [1-9]) COLOR=$WHITE
+[1-9])
+  COLOR=$WHITE
   ;;
-  0) COLOR=$GREEN
-     COUNT=􀆅
+0)
+  COLOR=$GREEN
+  COUNT=􀆅
   ;;
 esac
 
-sketchybar --set $NAME label=$COUNT icon.color=$COLOR
+sketchybar --set "$NAME" label="$COUNT" icon.color="$COLOR"

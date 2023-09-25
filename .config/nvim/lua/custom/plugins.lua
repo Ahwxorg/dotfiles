@@ -185,6 +185,171 @@ local plugins = {
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
+  {
+    "razak17/tailwind-fold.nvim",
+    opts= {},
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    ft = { 'html', 'svelte', 'astro', 'vue', 'typescriptreact' },
+  },
+  {
+    "chikko80/error-lens.nvim",
+    event = "BufRead",
+    dependencies = {
+        "nvim-telescope/telescope.nvim"
+    },
+    opts = {
+      {
+        enabled = true,
+        auto_adjust = {
+          enable = true,
+          fallback_bg_color = "#281478", -- mandatory if enable true (e.g. #281478)
+          step = 7, -- inc: colors should be brighter/darker
+          total = 30 -- steps of blender
+        },
+        prefix = 6, -- distance code <-> diagnostic message
+        -- default colors
+        colors = {
+          error_fg = "#FF6363", -- diagnostic font color
+          error_bg = "#4B252C", -- diagnostic line color
+          warn_fg = "#FA973A",
+          warn_bg = "#403733",
+          info_fg = "#5B38E8",
+          info_bg = "#281478",
+          hint_fg = "#25E64B",
+          hint_bg = "#147828"
+        }
+      }
+    },
+  },
+  {
+    "code-biscuits/nvim-biscuits",
+    event = "BufReadPost",
+    opts = {
+      show_on_start = false,
+      cursor_line_only = true,
+      default_config = {
+        min_distance = 10,
+        max_length = 50,
+        prefix_string = " 󰆘 ",
+        prefix_highlight = "Comment",
+        enable_linehl = true,
+      },
+    },
+  },
+  {
+    "m-demare/hlargs.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require("hlargs").setup {
+        hl_priority = 200,
+      }
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = { "CursorHold", "CursorHoldI" },
+    dependencies = "nvim-treesitter",
+    config = function()
+      require("illuminate").configure {
+        under_cursor = true,
+        max_file_lines = nil,
+        delay = 100,
+        providers = {
+          "lsp",
+          "treesitter",
+          "regex",
+        },
+        filetypes_denylist = {
+          "NvimTree",
+          "Trouble",
+          "Outline",
+          "TelescopePrompt",
+          "Empty",
+          "dirvish",
+          "fugitive",
+          "alpha",
+          "packer",
+          "neogitstatus",
+          "spectre_panel",
+          "toggleterm",
+          "DressingSelect",
+          "aerial",
+        },
+      }
+    end,
+  },
+  {
+    "hiphish/rainbow-delimiters.nvim",
+    event = "BufReadPost",
+    config = function()
+      local rainbow_delimiters = require "rainbow-delimiters"
+  
+      vim.g.rainbow_delimiters = {
+        strategy = {
+          [""] = rainbow_delimiters.strategy["global"],
+          vim = rainbow_delimiters.strategy["local"],
+        },
+        query = {
+          [""] = "rainbow-delimiters",
+          lua = "rainbow-blocks",
+        },
+        highlight = {
+          "RainbowDelimiterRed",
+          "RainbowDelimiterYellow",
+          "RainbowDelimiterBlue",
+          "RainbowDelimiterOrange",
+          "RainbowDelimiterGreen",
+          "RainbowDelimiterViolet",
+          "RainbowDelimiterCyan",
+        },
+      }
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPost",
+    opts = {
+      throttle = true,
+      max_lines = 0,
+      patterns = {
+        default = {
+          "class",
+          "function",
+          "method",
+        },
+      },
+    },
+  },
+  {
+    "utilyre/barbecue.nvim",
+    event = "LspAttach",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    opts = {},
+  },
+  {
+    "weilbith/nvim-code-action-menu",
+    cmd = "CodeActionMenu",
+    init = function()
+      vim.g.code_action_menu_show_details = true
+      vim.g.code_action_menu_show_diff = true
+      vim.g.code_action_menu_show_action_kind = true
+    end,
+    config = function()
+      dofile(vim.g.base46_cache .. "git")
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    keys = { "<C-d>", "<C-u>" },
+    opts = {
+      mappings = {
+        "<C-u>",
+        "<C-d>",
+      }
+    },
+  },
   -- 
   --
   -- Tools
@@ -205,6 +370,15 @@ local plugins = {
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = {
+      {
+        "sindrets/diffview.nvim",
+        config = true,
+      },
+    }
   },
   --
   --
@@ -247,3 +421,69 @@ local plugins = {
 }
 
 return plugins
+
+-- local overrides = require("custom.configs.overrides")
+
+--                               ---@type NvPluginSpec[]
+--                               local plugins = {
+--                               
+--                                 -- Override plugin definition options
+--                               
+--                                 {
+--                                   "neovim/nvim-lspconfig",
+--                                   dependencies = {
+--                                     -- format & linting
+--                                     {
+--                                       "jose-elias-alvarez/null-ls.nvim",
+--                                       config = function()
+--                                         require "custom.configs.null-ls"
+--                                       end,
+--                                     },
+--                                   },
+--                                   config = function()
+--                                     require "plugins.configs.lspconfig"
+--                                     require "custom.configs.lspconfig"
+--                                   end, -- Override to setup mason-lspconfig
+--                                 },
+--                               
+--                                 -- override plugin configs
+--                                 {
+--                                   "williamboman/mason.nvim",
+--                                   opts = overrides.mason
+--                                 },
+--                               
+--                                 {
+--                                   "nvim-treesitter/nvim-treesitter",
+--                                   opts = overrides.treesitter,
+--                                 },
+--                               
+--                                 {
+--                                   "nvim-tree/nvim-tree.lua",
+--                                   opts = overrides.nvimtree,
+--                                 },
+--                               
+--                                 -- Install a plugin
+--                                 {
+--                                   "max397574/better-escape.nvim",
+--                                   event = "InsertEnter",
+--                                   config = function()
+--                                     require("better_escape").setup()
+--                                   end,
+--                                 },
+--                               
+--                                 -- To make a plugin not be loaded
+--                                 -- {
+--                                 --   "NvChad/nvim-colorizer.lua",
+--                                 --   enabled = false
+--                                 -- },
+--                               
+--                                 -- All NvChad plugins are lazy-loaded by default
+--                                 -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+--                                 -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
+--                                 -- {
+--                                 --   "mg979/vim-visual-multi",
+--                                 --   lazy = false,
+--                                 -- }
+--                               }
+--                               
+--                               return plugins

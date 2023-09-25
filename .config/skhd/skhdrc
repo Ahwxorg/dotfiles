@@ -4,7 +4,6 @@ alt - return : open -na /Applications/WezTerm.app/Contents/MacOS/wezterm
 alt + shift - e : open -na /Applications/Element.app/Contents/MacOS/Element
 alt + shift - s : open -na /Applications/Signal.app/Contents/MacOS/Signal
 alt + shift - f : open -na /Applications/Firefox.app/Contents/MacOS/firefox
-alt + shift - h : open -na /Applications/WezTerm.app/Contents/MacOS/wezterm -e htop
 alt + shift - t : open -na Mail
 
 # restart Yabi, SpaceBar, and SKHD
@@ -29,6 +28,11 @@ alt - h : yabai -m window --focus west
 # alt - j : yabai -m window --focus south
 # alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
+
+alt + shift - h : yabai -m window --swap west
+alt + shift - j : yabai -m window --swap south
+alt + shift - k : yabai -m window --swap north
+alt + shift - l : yabai -m window --swap east
 
 # cycle through stack windows
 # alt - p : yabai -m window --focus stack.next || yabai -m window --focus south
@@ -126,7 +130,7 @@ cmd + shift - d : yabai -m window --resize right:-20:0
 alt + shift - e : yabai -m space --layout bsp
 alt + shift - s : yabai -m space --layout float
 alt - e : yabai -m space --layout bsp
-alt - s : yabai -m space --layout stack
+alt - s : yabai -m space --rotate 90
 
 # float / unfloat window and center on screen
 alt - space : yabai -m window --toggle float;\

@@ -1,86 +1,73 @@
-#!/bin/bash
+source "$HOME/.config/colors.sh"
+source "$HOME/.config/icons.sh"
 
-source "$CONFIG_DIR/colors.sh" # Loads all defined colors
-source "$CONFIG_DIR/icons.sh" # Loads all defined icons
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+ITEMS_DIR="$HOME/.config/sketchybar/items"
 
-ITEM_DIR="$CONFIG_DIR/items" # Directory where the items are configured
-PLUGIN_DIR="$CONFIG_DIR/plugins" # Directory where all the plugin scripts are stored
+sketchybar --bar color=0x00000000 \
+                 height=56        \
+                 margin=0         \
+                 y_offset=0       \
+                 padding_left=8   \
+                 padding_right=8
 
-FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-PADDINGS=3 # All paddings use this value (icon, label, background)
+sketchybar --default padding_left=8                                    \
+                     padding_right=8                                   \
+                                                                       \
+                     background.border_color=$COLOR_YELLOW             \
+                     background.border_width=2                         \
+                     background.height=40                              \
+                     background.corner_radius=12                       \
+                                                                       \
+                     icon.color=$COLOR_YELLOW                          \
+                     icon.highlight_color=$BASE                        \
+                     icon.padding_left=6                               \
+                     icon.padding_right=2                              \
+                     icon.font="CaskaydiaCove Nerd Font:Regular:16.0"  \
+                                                                       \
+                     label.color=$COLOR_YELLOW                         \
+                     label.highlight_color=$BASE                       \
+                     label.padding_left=2                              \
+                     label.padding_right=6                             \
+                     label.font="CaskaydiaCove Nerd Font:Regular:12.0"
 
-# Setting up and starting the helper process
-HELPER=git.felix.helper
-killall helper
-(cd $CONFIG_DIR/helper && make)
-$CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
+# source "$ITEMS_DIR/command.sh"
+# source "$ITEMS_DIR/seperator-11.sh"
 
-# Unload the macOS on screen indicator overlay for volume change
-launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+source "$ITEMS_DIR/spaces.sh"
+source "$ITEMS_DIR/seperator-12.sh"
 
-# Setting up the general bar appearance of the bar
-bar=(
-  height=45
-  color=$BAR_COLOR
-  border_width=2
-  border_color=$BAR_BORDER_COLOR
-  shadow=off
-  position=top
-  sticky=on
-  padding_right=10
-  padding_left=10
-  y_offset=-5
-  margin=-2
-  topmost=window
-)
+source "$ITEMS_DIR/mail.sh"
+source "$ITEMS_DIR/github.sh"
+source "$ITEMS_DIR/brew.sh"
 
-sketchybar --bar "${bar[@]}"
+sketchybar --add bracket notifications github.template github.bell  mail brew \
+           --set         notifications background.color=$BASE                 \
+                                       background.border_color=$COLOR_CYAN
 
-# Setting up default values
-defaults=(
-  updates=when_shown
-  icon.font="$FONT:Bold:14.0"
-  icon.color=$ICON_COLOR
-  icon.padding_left=$PADDINGS
-  icon.padding_right=$PADDINGS
-  label.font="$FONT:Semibold:13.0"
-  label.color=$LABEL_COLOR
-  label.padding_left=$PADDINGS
-  label.padding_right=$PADDINGS
-  padding_right=$PADDINGS
-  padding_left=$PADDINGS
-  background.height=26
-  background.corner_radius=9
-  background.border_width=2
-  popup.background.border_width=2
-  popup.background.corner_radius=9
-  popup.background.border_color=$POPUP_BORDER_COLOR
-  popup.background.color=$POPUP_BACKGROUND_COLOR
-  popup.blur_radius=20
-  popup.background.shadow.drawing=on
-)
+source "$ITEMS_DIR/time.sh"
 
-sketchybar --default "${defaults[@]}"
+sketchybar --add bracket clock time date                          \
+           --set         clock background.color=$BASE             \
+                               background.border_color=$RED
 
-# Left
-# source "$ITEM_DIR/apple.sh"
-source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/yabai.sh"
-source "$ITEM_DIR/front_app.sh"
+source "$ITEMS_DIR/seperator-r1.sh"
 
-# Center
-source "$ITEM_DIR/spotify.sh"
+source "$ITEMS_DIR/ip-addr.sh"
+source "$ITEMS_DIR/volume.sh"
+source "$ITEMS_DIR/battery.sh"
 
-# Right
-source "$ITEM_DIR/calendar.sh"
-source "$ITEM_DIR/brew.sh"
-source "$ITEM_DIR/wifi.sh"
-source "$ITEM_DIR/github.sh"
-source "$ITEM_DIR/battery.sh"
-source "$ITEM_DIR/volume.sh"
-# source "$ITEM_DIR/cpu.sh"
+sketchybar --add bracket status ip_address volume battery           \
+           --set         status background.color=$BASE              \
+                                background.border_color=$COLOR_BLUE
 
-# Forcing all item scripts to run (never do this outside of sketchybarrc)
+source "$ITEMS_DIR/seperator-r2.sh"
+source "$ITEMS_DIR/sys.sh"
+
+sketchybar --add bracket activity ram disk cpu                     \
+           --set         activity background.color=$BASE           \
+                                  background.border_color=$MAGENTA
+
 sketchybar --update
 
-echo "sketchybar configuation loaded.."
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &

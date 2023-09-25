@@ -1,56 +1,33 @@
-#!/bin/bash
+#!/bin/sh
 
-WIDTH=100
+# The volume_change event supplies a $INFO variable in which the current volume
+# percentage is passed to the script.
 
-volume_change() {
-  source "$CONFIG_DIR/icons.sh"
-  case $INFO in
-    [6-9][0-9]|100) ICON=$VOLUME_100
-    ;;
-    [3-5][0-9]) ICON=$VOLUME_66
-    ;;
-    [1-2][0-9]) ICON=$VOLUME_33
-    ;;
-    [1-9]) ICON=$VOLUME_10
-    ;;
-    0) ICON=$VOLUME_0
-    ;;
-    *) ICON=$VOLUME_100
-  esac
+source "$HOME/.config/colors.sh"
+source "$HOME/.config/icons.sh"
 
-  sketchybar --set volume_icon label=$ICON
+VOLUME=$INFO
 
-  sketchybar --set $NAME slider.percentage=$INFO \
-             --animate tanh 30 --set $NAME slider.width=$WIDTH 
-
-  sleep 2
-
-  # Check wether the volume was changed another time while sleeping
-  FINAL_PERCENTAGE=$(sketchybar --query $NAME | jq -r ".slider.percentage")
-  if [ "$FINAL_PERCENTAGE" -eq "$INFO" ]; then
-    sketchybar --animate tanh 30 --set $NAME slider.width=0
-  fi
-}
-
-mouse_clicked() {
-  osascript -e "set volume output volume $PERCENTAGE"
-}
-
-mouse_entered() {
-  sketchybar --set $NAME slider.knob.drawing=on
-}
-
-mouse_exited() {
-  sketchybar --set $NAME slider.knob.drawing=off
-}
-
-case "$SENDER" in
-  "volume_change") volume_change
-  ;;
-  "mouse.clicked") mouse_clicked
-  ;;
-  "mouse.entered") mouse_entered
-  ;;
-  "mouse.exited") mouse_exited
-  ;;
+case $VOLUME in
+[6-9][0-9] | 100)
+	ICON=${ICONS_VOLUME[3]}
+	COLOR=$TEAL
+	;;
+[3-5][0-9])
+	ICON=${ICONS_VOLUME[2]}
+	COLOR=$TEAL
+	;;
+[1-9] | [1-2][0-9])
+	ICON=${ICONS_VOLUME[1]}
+	COLOR=$TEAL
+	;;
+*)
+	ICON=${ICONS_VOLUME[0]}
+	COLOR=$TEAL
+	;;
 esac
+
+sketchybar --set $NAME icon="$ICON" \
+	icon.color=$COLOR \
+	label="$VOLUME%" \
+	label.color=$COLOR

@@ -1,59 +1,33 @@
-#!/bin/bash
+sketchybar --add event window_change
 
-SPACE_ICONS=("一" "二" "三" "四" "五" "六" "七" "八" "九" "十")
+COLORS_SPACE=($BLUE $LAVENDER $SAPPHIRE $SKY $TEAL $GREEN $PEACH $MAROON $RED $MAUVE)
+LENGTH=${#ICONS_SPACE[@]}
 
-# Destroy space on right click, focus space on left click.
-# New space by left clicking separator (>)
-
-sid=0
-spaces=()
-for i in "${!SPACE_ICONS[@]}"
+for i in "${!ICONS_SPACE[@]}"
 do
   sid=$(($i+1))
-
-  space=(
-    associated_space=$sid
-    icon="${SPACE_ICONS[i]}"
-    icon.padding_left=10
-    icon.padding_right=10
-    padding_left=2
-    padding_right=2
-    label.padding_right=20
-    icon.highlight_color=$RED
-    label.color=$GREY
-    label.highlight_color=$WHITE
-    label.font="sketchybar-app-font:Regular:16.0"
-    label.y_offset=-1
-    background.color=$BACKGROUND_1
-    background.border_color=$BACKGROUND_2
-    background.drawing=off
-    label.drawing=off
-    script="$PLUGIN_DIR/space.sh"
-  )
-
-  sketchybar --add space space.$sid left    \
-             --set space.$sid "${space[@]}" \
-             --subscribe space.$sid mouse.clicked
+  PAD_LEFT=2
+  PAD_RIGHT=2
+  if [[ $i == 0 ]]; then
+    PAD_LEFT=8
+  elif [[ $i == $(($LENGTH-1)) ]]; then
+    PAD_RIGHT=8
+  fi
+  sketchybar --add space space.$sid left                                       \
+             --set       space.$sid script="$PLUGIN_DIR/app_space.sh"          \
+                                    associated_space=$sid                      \
+                                    padding_left=$PAD_LEFT                     \
+                                    padding_right=$PAD_RIGHT                   \
+                                    background.color=${COLORS_SPACE[i]}        \
+                                    background.border_width=0                  \
+                                    background.corner_radius=6                 \
+                                    background.height=24                       \
+                                    icon=${ICONS_SPACE[i]}                     \
+                                    icon.color=${COLORS_SPACE[i]}              \
+                                    label="  "                                 \
+                                    label.color=${COLORS_SPACE[i]}             \
+             --subscribe space.$sid front_app_switched window_change
 done
 
-spaces_bracket=(
-  background.color=$BACKGROUND_1
-  background.border_color=$BACKGROUND_2
-)
-
-separator=(
-  icon=􀆊
-  icon.font="$FONT:Heavy:16.0"
-  padding_left=10
-  padding_right=8
-  label.drawing=off
-  associated_display=active
-  click_script='yabai -m space --create && sketchybar --trigger space_change'
-  icon.color=$WHITE
-)
-
-sketchybar --add bracket spaces_bracket '/space\..*/'  \
-           --set spaces_bracket "${spaces_bracket[@]}" \
-                                                       \
-           --add item separator left                   \
-           --set separator "${separator[@]}"
+sketchybar --add bracket spaces '/space\..*/'                      \
+           --set         spaces background.color=$BASE
