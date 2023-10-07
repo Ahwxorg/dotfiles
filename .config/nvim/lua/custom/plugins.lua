@@ -409,7 +409,17 @@ local plugins = {
    config = function()
       require "custom.configs.qol.noice"
    end,
-}
+  },
+  -- {
+  --   "sunjon/shade.nvim",
+  --   enabled = true,
+  --   config = function()
+  --     require'shade'.setup({
+  --       overlay_opacity = 50,
+  --       opacity_step = 1
+  --     })
+  --   end,
+  -- }
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`

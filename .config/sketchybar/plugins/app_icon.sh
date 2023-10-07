@@ -66,13 +66,13 @@ case "$1" in
 "Voice Memos")
 	RESULT=$ICON_MICROPHONE
 	;;
-"Messages" | "Slack" | "Microsoft Teams" | "Discord" | "Telegram")
+"Messages" | "Signal" | "Element" | "Slack" | "Microsoft Teams" | "Discord" | "Telegram")
 	RESULT=$ICON_CHAT
 	;;
 "FaceTime" | "zoom.us" | "Webex")
 	RESULT=$ICON_VIDEOCHAT
 	;;
-"Notes" | "TextEdit" | "Stickies" | "Microsoft Word")
+"Notes" | "Arc" | "Notary" | "TextEdit" | "Stickies" | "Microsoft Word")
 	RESULT=$ICON_NOTE
 	;;
 "Reminders" | "Microsoft OneNote")
@@ -81,7 +81,7 @@ case "$1" in
 "Photo Booth")
 	RESULT=$ICON_CAMERA
 	;;
-"Safari" | "Beam" | "DuckDuckGo" | "Arc" | "Microsoft Edge" | "Google Chrome" | "Firefox")
+"Safari" | "Tor Browser" | "Chromium" | "Beam" | "DuckDuckGo" | "Firefox")
 	RESULT=$ICON_WEB
 	;;
 "System Settings" | "System Information" | "TinkerTool")

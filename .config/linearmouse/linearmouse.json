@@ -41,6 +41,26 @@
           "vendorID" : "0x46d"
         }
       }
+    },
+    {
+      "pointer" : {
+        "acceleration" : 0,
+        "speed" : 0.125
+      },
+      "if" : {
+        "device" : {
+          "productName" : "Razer Orochi",
+          "serialNumber" : "00-02-76-22-31-22",
+          "productID" : "0x14",
+          "category" : "mouse",
+          "vendorID" : "0x1532"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 0
+        }
+      }
     }
   ]
 }

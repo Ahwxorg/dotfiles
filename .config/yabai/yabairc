@@ -65,4 +65,4 @@ yabai -m rule --add label="^Kdenlive$" manage=off
 
 yabai -m config layout bsp
 
-echo "yabai configuration loaded.."
+echo "yabai configuration loaded..."
