@@ -42,15 +42,15 @@ abbr b "brew"
 abbr y "yarn"
 
 # keybindings
-  # bind \cl 'clear'
-bind \cl 'clear; commandline -f repaint'
+bind \cl 'clear'
+  #bind \cl 'clear; commandline -f repaint'
   # control backspace
 bind -k backspace 'backward-kill-word'
   # control delete
 bind \e\[3\;5~ 'kill-word'
-  # search directory
+  # searches
 bind \cF 'nvim $(fzf)'
-  # search history
+bind \cD 'cd $(fzf)'
 bind \cR 'history | fzf | pbcopy'
 
 set -gx EDITOR nvim

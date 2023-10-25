@@ -3,6 +3,7 @@ if type -q exa
   alias lla "ll -a"
   alias ls "exa"
   alias la "exa -la"
+  alias acpi "ioreg -l | grep 'CurrentCapacity' | cut -d= -f2 | head -n1"
 end
 
 if type -q diskutil
