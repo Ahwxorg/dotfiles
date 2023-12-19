@@ -1,0 +1,23 @@
+#!/bin/bash
+
+cd "$HOME/Pictures/Screenshots"
+
+# DATE="$(date --universal | sed 's/\ /_/g' | sed 's/_UTC//g')"
+# echo $DATE
+
+grim -g "$(slurp)" # -o "~/Pictures/Screenshots/$(date)"
+
+SELECTED=$(cat <<EOF | tofi --prompt-text "Screenshot"
+Upload
+Copy to clipboard
+Save
+EOF
+)
+
+ITEM="$(ls -l | awk '{print $9}' | tail -n1)"
+
+if [[ "$SELECTED" == "Upload" ]]; then
+  curl -F"file=@$ITEM" https://0x0.st | wl-copy
+elif [[ "$SELECTED" == "Copy to clipboard" ]]; then
+  cat "$ITEM" | wl-copy --type image/png
+fi
