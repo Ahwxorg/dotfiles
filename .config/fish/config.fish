@@ -1,7 +1,7 @@
-if status is-interactive
-and not set -q TMUX
-    exec tmux
-end
+# if status is-interactive
+# and not set -q TMUX
+    # exec tmux
+# end
 
 set fish_greeting ""
 
@@ -20,12 +20,10 @@ alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
 alias :q "exit"
-alias doas "sudo"
 alias notes "nvim ~/Documents/todo.md"
 alias todo "nvim ~/Documents/todo.md"
 alias irc "ssh irc"
 alias life "kitty -e mpv ~/down/Life_Could_Be_A_Dream.mp3"
-alias ip "curl https://ip-api.io/json | jq .ip | pbcopy"
 alias fishconf "nvim ~/.config/fish/config.fish"
 alias tmuxconf "nvim ~/.config/tmux/tmux.conf"
 alias nvimconf "nvim ~/.config/nvim/lua/custom/init.lua"
@@ -33,6 +31,8 @@ alias termconf "nvim ~/.config/alacritty/alacritty.yml"
 alias .. "cd .."
 alias ... "cd ../.."
 alias .... "cd ../../.."
+alias reboot-to-macos "echo 1 | doas asahi-bless 1>/dev/null && doas reboot"
+alias wc "wl-copy"
 
 command -qv nvim && alias vim nvim && alias v nvim && alias vi nvim && alias nv nvim
 abbr mkdir 'mkdir -p'
@@ -45,9 +45,9 @@ abbr y "yarn"
 bind \cl 'clear'
   #bind \cl 'clear; commandline -f repaint'
   # control backspace
-bind -k backspace 'backward-kill-word'
+# bind -k backspace 'backward-kill-word'
   # control delete
-bind \e\[3\;5~ 'kill-word'
+# bind \e\[3\;5~ 'kill-word'
   # searches
 bind \cF 'nvim $(fzf)'
 bind \cD 'cd $(fzf)'
@@ -60,7 +60,7 @@ set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 
 # Rust
-source "$HOME/.cargo/env_fish"
+# source "$HOME/.cargo/env_fish"
 
 # NodeJS
 set -gx PATH node_modules/.bin /opt/local/bin $PATH
@@ -72,7 +72,9 @@ switch (uname)
     source (dirname (status --current-filename))/config-linux.fish
     if status is-login
         if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-            exec startx
+            # exec startx # If using Xorg
+            dbus-run-session Hyprland # using Wayland/Dbus
+            echo Login
         end
     end
   case '*'
