@@ -10,8 +10,8 @@
 
     width = 300
     # height = 260
-    origin = top-center
-    # origin = top-right
+    # origin = top-center
+    origin = top-right
     # offset = 60x40
 
 
