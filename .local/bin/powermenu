@@ -1,0 +1,51 @@
+#!/bin/bash
+
+SELECTED=$(cat <<EOF | tofi --prompt-text "What to do?"
+Lock
+Logout
+Suspend
+Reboot
+Shutdown
+EOF
+)
+
+if [[ "$SELECTED" == "Lock" ]]; then
+  swaylock
+elif [[ "$SELECTED" == "Logout" ]]; then
+  CONFIRM=$(cat <<EOF | tofi --prompt-text "Are you sure?"
+  Yes
+  No
+  EOF
+  )
+  if [[ "$CONFIRM" == "Yes" ]]; then
+    echo hyprctl dispatch exit
+  else
+    exit 0
+  fi
+elif [[ "$SELECTED" == "Suspend" ]]; then
+  notify-send "Currently not supported..."
+elif [[ "$SELECTED" == "Reboot" ]]; then
+  CONFIRM=$(cat <<EOF | tofi --prompt-text "Are you sure?"
+  Yes
+  No
+  EOF
+  )
+  if [[ "$CONFIRM" == "Yes" ]]; then
+    echo reboot
+  else
+    exit 0
+  fi
+elif [[ "$SELECTED" == "Shutdown" ]]; then
+  CONFIRM=$(cat <<EOF | tofi --prompt-text "Are you sure?"
+  Yes
+  No
+  EOF
+  )
+  if [[ "$CONFIRM" == "Yes" ]]; then
+    echo shutdown
+  else
+    exit 0
+  fi
+else
+  exit 0
+fi
