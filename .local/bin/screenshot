@@ -7,7 +7,7 @@ cd "$HOME/Pictures/Screenshots"
 
 grim -g "$(slurp)" # -o "~/Pictures/Screenshots/$(date)"
 
-SELECTED=$(cat <<EOF | tofi --prompt-text "Screenshot"
+SELECTED=$(cat <<EOF | tofi --prompt-text "Screenshot: "
 Upload
 Copy to clipboard
 Save
@@ -20,4 +20,4 @@ if [[ "$SELECTED" == "Upload" ]]; then
   curl -F"file=@$ITEM" https://0x0.st | wl-copy
 elif [[ "$SELECTED" == "Copy to clipboard" ]]; then
   cat "$ITEM" | wl-copy --type image/png
-fi
+fi 
