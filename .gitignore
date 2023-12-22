@@ -1,0 +1,16 @@
+.cache
+.cargo
+.*history*
+.electron-gyp
+.local/share
+.hyprland
+.mozilla
+.pki
+.npm
+.ssh
+.thunderbird
+.yarn
+Development
+Documents
+Downloads
+Pictures
