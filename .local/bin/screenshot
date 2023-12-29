@@ -8,8 +8,8 @@ cd "$HOME/Pictures/Screenshots"
 grim -g "$(slurp)" # -o "~/Pictures/Screenshots/$(date)"
 
 SELECTED=$(cat <<EOF | tofi --prompt-text "Screenshot: "
-Upload
 Copy to clipboard
+Upload
 Save
 EOF
 )
