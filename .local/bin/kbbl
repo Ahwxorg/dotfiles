@@ -18,11 +18,11 @@ increase_brightness() {
     new_brightness=$(awk "BEGIN {printf \"%.0f\", $current_brightness + ($max_brightness * $percentage / 100)}")
 
     if [ "$new_brightness" -le "$max_brightness" ]; then
-	$ELEVATE echo "$new_brightness" > /sys/class/leds/kbd_backlight/brightness
+	echo "$new_brightness" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
         new_percentage=$(awk "BEGIN {printf \"%.0f\", ($new_brightness * 100) / $max_brightness}")
         notify-send "Brightness increased to $new_percentage%"
     else
-	$ELEVATE echo "$max_brightness" > /sys/class/leds/kbd_backlight/brightness
+	echo "$max_brightness" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
         notify-send "Brightness set to maximum"
     fi
 }
@@ -36,11 +36,11 @@ decrease_brightness() {
     new_brightness=$(awk "BEGIN {printf \"%.0f\", $current_brightness - ($max_brightness * $percentage / 100)}")
 
     if [ "$new_brightness" -ge 0 ]; then
-	$ELEVATE echo "$new_brightness" > /sys/class/leds/kbd_backlight/brightness
+	echo "$new_brightness" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
         new_percentage=$(awk "BEGIN {printf \"%.0f\", ($new_brightness * 100) / $max_brightness}")
         notify-send "Brightness decreased to $new_percentage%"
     else
-	$ELEVATE echo "0" > /sys/class/leds/kbd_backlight/brightness
+	echo "0" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
         notify-send "Brightness set to minimum"
     fi
 }
