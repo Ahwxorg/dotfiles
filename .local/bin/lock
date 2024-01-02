@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Colors
+bg='000000' bgl='313244' fg='d9e0ee'
+red='f38ba8' green='a6e3a1' yellow='f9e2af'
+blue='89b4fa' magenta='cba6f7' cyan='89dceb'
+alpha='00000000'
+
+# CMD
+swaylock -f \
+	`# General` \
+	--ignore-empty-password \
+	--show-failed-attempts \
+	--indicator-caps-lock \
+	--color ${bg}FF \
+	`#--image ${IMAGE} --scaling fill` \
+	--font 'Noto Sans' --font-size 30 \
+	--key-hl-color ${green} \
+	--caps-lock-key-hl-color ${blue} \
+	--bs-hl-color ${red} \
+	--caps-lock-bs-hl-color ${red} \
+	--indicator-radius 50 \
+	--indicator-thickness 10 \
+	--inside-color ${alpha} \
+	--inside-clear-color ${alpha} \
+	--inside-caps-lock-color ${alpha} \
+	--inside-ver-color ${blue} \
+	--inside-wrong-color ${red} \
+	--layout-bg-color ${cyan} \
+	--layout-border-color ${cyan} \
+	--layout-text-color ${bg} \
+	--line-color ${bg} \
+	--line-clear-color ${red} \
+	--line-caps-lock-color ${bg} \
+	--line-ver-color ${bg} \
+	--line-wrong-color ${bg} \
+	--ring-color ${cyan} \
+	--ring-clear-color ${bg} \
+	--ring-caps-lock-color ${magenta} \
+	--ring-ver-color ${blue} \
+	--ring-wrong-color ${red} \
+	--separator-color ${bg} \
+	--text-color ${fg} \
+	--text-clear-color ${fg} \
+	--text-caps-lock-color ${fg} \
+	--text-ver-color ${bg} \
+	--text-wrong-color ${bg} \
+	--indicator-caps-lock
