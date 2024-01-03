@@ -2,6 +2,7 @@
 .cargo
 .*history*
 .electron-gyp
+.config/Element
 .local/share
 .hyprland
 .mozilla
