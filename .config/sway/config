@@ -112,10 +112,10 @@ input type:touchpad {
     assign [app_id="firefox"] 1
     for_window [app_id="firefox"] focus
 
-    assign [app_id="element"] 8
-    for_window [app_id="element"] focus
+    assign [app_id="Element"] 8
+    for_window [app_id="Element"] focus
 
-    exec swaymsg "workspace 2; exec $term"
+    # exec swaymsg "workspace 2; exec $term"
     exec mako
 
     # Kill focused window
