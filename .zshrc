@@ -1,24 +1,37 @@
 export ZSH="$HOME/.config/zsh"
+export FZF_DEFAULT_COMMAND="find -L"
+export PATH="${PATH}:${HOME}/.local/bin/"
+export DISABLE_AUTO_UPDATE=false
+export LANG=en_US.UTF-8
+export EDITOR=nvim
 
-ZSH_THEME="kardan"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   zsh-syntax-highlighting
-  zsh-autosuggestions
+  # zsh-autosuggestions
   zsh-abbr
+  z
+  # vi-mode
 )
+
+# export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/\~}\e[0;37m\`parse_git_branch\` > \e[0;0m")
+export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/~} > \e[0;0m")
+
 
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
 
-alias ls="ls -p -G"
-alias la="ls -A"
-alias ll="ls -l"
-alias lla="ll -A"
+alias ls="eza"
+
+alias ls="eza -Glh"
+alias la="eza -A"
+alias ll="eza -l"
+alias lla="eza -lA"
 alias :q="exit"
+alias ezit="exit"
 alias notes="nvim ~/Documents/todo.md"
 alias todo="nvim ~/Documents/todo.md"
 alias irc="ssh irc"
@@ -31,6 +44,9 @@ alias reboot-to-macos="echo 1 | doas asahi-bless 1>/dev/null && doas reboot"
 alias wc="wl-copy"
 alias zshrc="nvim ~/.zshrc"
 alias yt-dlp-audio="yt-dlp -f 'ba' -x --audio-format mp3"
+alias emerge="doas emerge"
+alias zshconf="nvim ~/.zshrc"
+alias open="xdg-open"
 
 complete -cf doas
 
@@ -43,10 +59,10 @@ zstyle ':completion:*' menu select
 # abbr vi="nvim"
 # abbr nv="nvim"
 # abbr nvi="nvim"
-# gc="git clone"
-# ga="git add ."
-# gcm="git commit -m"
-# gph="git push -u origin main"
+# abbr gc="git clone"
+# abbr ga="git add ."
+# abbr gcm="git commit -m"
+# abbr gph="git push -u origin main"
 
 gpa() {
   for remote in $(cat .git/config | grep 'remote "' | cut -d '"' -f2)
@@ -54,7 +70,7 @@ gpa() {
 }
 
 startwm() {
-  dbus-run-session sway
+  dbus-run-session Hyprland
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
