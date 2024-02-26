@@ -78,7 +78,7 @@
     },
     "format": "{icon} {percent}%",
     "format-charging": "󱐋",
-    "format-plugged": "󱐋",
+    "format-plugged": "󱐋N",
     "format-full": "󱟢",
     "format-good": "{icon}",
     //"format-alt": "{icon}  {time}",
