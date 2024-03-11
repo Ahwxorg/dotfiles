@@ -1,50 +1,31 @@
 general {
-  output_format = "i3bar"
-  color_good     = "#FFFFFF"
-  color_degraded = "#FF8000"
-  color_bad      = "#FF0000"
-  colors         = true
-  interval       = 5
+  colors = true
+  color_good = "#a3be8c"
+  color_bad  = "#bf616a"
+  color_degraded = "#ebcb8b"
+  interval = 1
+  separator = " | "
 }
 
-order += "wireless wlp59s0"
-order += "battery 0"
-#order += "cpu_temperature 0"
-order += "volume master"
-order += "time"
-
-wireless wlp59s0 {
-  format_up   = "W: %essid (%quality, %ip)"
-  format_down = "W: down"
-}
-
-battery 0 {
-  format                   = "%status %percentage %remaining"
-  integer_battery_capacity = true
-  last_full_capacity       = true
-  status_bat               = "BAT"
-  status_chr               = "CHR"
-  status_full              = "FULL"
-  status_unk               = "UNK"
-  #low_treshold             = 30
-  path                     = /sys/class/power_supply/BAT%d/uevent
-}
-
-run_watch DHCP {
-  pidfile = "/var/run/dhclient*.pid"
-}
-
-time {
-  format = "%Y-%m-%d - %H:%M:%S"
-}
+order += "disk /"
+order += "ethernet enp42s0"
+order += "memory"
+order += "tztime local"
 
 disk "/" {
-  format = "%free"
+  format = "/: %percentage_used"
 }
 
-volume master {
-  format    = "VOL: %volume"
-  device    = "default"
-  mixer     = "Master"
-  mixer_idx = 0
+ethernet enp42s0 {
+  format_up = "%ip (%speed)"
+  format_down = "Ethernet down"
+}
+
+memory {
+  memory_used_method = classical
+  format="%used/%total"
+}
+
+tztime local {
+  format = "%A %d-%m - %H:%M"
 }
