@@ -34,7 +34,7 @@ alias .... "cd ../../.."
 alias reboot-to-macos "echo 1 | doas asahi-bless 1>/dev/null && doas reboot"
 alias wc "wl-copy"
 
-command -qv nvim && alias vim nvim && alias v nvim && alias vi nvim && alias nv nvim
+command -qv nvim && alias vim nvim && alias v nvim && alias vi nvim && alias nv nvim && alias nvi nvim
 abbr mkdir 'mkdir -p'
 abbr pythonrm 'python; rm .python_history'
 abbr g "git"
