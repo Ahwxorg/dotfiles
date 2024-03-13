@@ -1,8 +1,0 @@
-alias kshconf="vim ~/.kshrc"
-alias doas='doas '
-alias em='doas emerge -v'
-alias vim='nvim'
-alias ipp='curl ipinfo.io/ip'
-PS1="$(echo -e "\033[34m~ \033[00m")"
-
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then exec startx -- vt1; fi
