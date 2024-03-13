@@ -1,42 +1,37 @@
+if [ -e /home/liv/.nix-profile/etc/profile.d/nix.sh ]; then . /home/liv/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
 export ZSH="$HOME/.config/zsh"
 export FZF_DEFAULT_COMMAND="find -L"
 export PATH="${PATH}:${HOME}/.local/bin/"
 export DISABLE_AUTO_UPDATE=false
 export LANG=en_US.UTF-8
-export EDITOR=nvim
+alias nvim="nix run /home/liv/nixvim --"
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(
   git
   zsh-syntax-highlighting
-  # zsh-autosuggestions
+  zsh-autosuggestions
   zsh-abbr
   z
   # vi-mode
 )
 
-# export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/\~}\e[0;37m\`parse_git_branch\` > \e[0;0m")
 export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/~} > \e[0;0m")
-
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='nvim'
-
-alias ls="eza"
-
-alias ls="eza -Glh"
-alias la="eza -A"
-alias ll="eza -l"
-alias lla="eza -lA"
+alias ls="eza --git -lh"
+alias la="eza --git -A"
+alias ll="eza --git -l"
+alias lla="eza --git -lA"
 alias :q="exit"
 alias ezit="exit"
 alias notes="nvim ~/Documents/todo.md"
 alias todo="nvim ~/Documents/todo.md"
 alias irc="ssh irc"
 alias tmuxconf="nvim ~/.config/tmux/tmux.conf"
-alias nvimconf="cd ~/.config/nvim && nvim"
 alias termconf="nvim ~/.config/alacritty/alacritty.yml"
 alias reboot-to-macos="echo 1 | doas asahi-bless 1>/dev/null && doas reboot"
 alias wc="wl-copy"
