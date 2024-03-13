@@ -25,3 +25,23 @@ Pictures
 .config/obs
 .config/pulse
 .config/yarn
+*jpg
+*png
+*sh
+.config/darktable
+.config/astro
+.config/gh
+.config/fontforge
+.config/environment.d
+.config/dconf
+.config/kdenlive*
+.config/kicad
+.config/lazygit
+.config/libreoffice
+.config/obs-studio
+.config/nix
+.config/pavucontrol.ini
+.config/QtProject.conf
+.config/pulse
+.config/Signal\ Desktop
+.config/spicy
