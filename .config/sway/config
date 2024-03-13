@@ -48,8 +48,12 @@ scratchpad_minimize enable
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# Default wallpapers and more resolutions are available in /usr/share/backgrounds/sway/
+
+# Forest, almost skiing thingy
 output * bg ~/Pictures/Wallpapers/forest/wallhaven-vm2mmp.jpg fill
+# Windows XP like wallpaper, very nice
+output * bg ~/Pictures/Wallpapers/landscape/wallhaven-o57zgp.png fill
 #
 # Example configuration:
 #
@@ -108,6 +112,9 @@ input type:touchpad {
     bindsym $mod+XF86MonBrightnessDown exec ~/.local/bin/kbbl --down 5
     bindsym $othermod+XF86MonBrightnessUp exec ~/.local/bin/scbl --up 5
     bindsym $othermod+XF86MonBrightnessDown exec ~/.local/bin/scbl --down 5
+    bindsym $mod+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym $mod+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
 
     assign [app_id="firefox"] 1
     for_window [app_id="firefox"] focus
@@ -117,6 +124,8 @@ input type:touchpad {
 
     # exec swaymsg "workspace 2; exec $term"
     exec mako
+    exec gentoo-pipewire-launcher
+    exec foot --server
 
     # Kill focused window
     bindsym $mod+q kill
@@ -212,6 +221,10 @@ input type:touchpad {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    # i hate this
+    focus_follows_mouse no
+
 #
 # Scratchpad:
 #
@@ -261,9 +274,24 @@ bar {
     status_command while bar; do sleep 60; done
 
     colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+
+
+
+        background #000000
+        #background #00000000
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        separator #129832
+        focused_workspace  #000000 #ffffff #000000
+        active_workspace   #000000 #000000 #ffffff
+        inactive_workspace #000000 #000000 #888888
+        # urgent_workspace   #00000000 #00000000 #900000
+        binding_mode       #000000 #000000 #900000
+
+
+
     }
 }
 
