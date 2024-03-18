@@ -61,9 +61,9 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  # decorations: buttonless # Only works on macOS
+  #decorations: buttonless
 
-  opacity: 0.9
+  opacity: 1.0
 
   # Startup Mode (changes require restart)
   #
@@ -433,7 +433,8 @@ color_schemes:
 
     # Default colors
     primary:
-      background: '#1E1E2E' # base
+      background: '#000000' # base
+      # background: '#1E1E2E' # base
       foreground: '#CDD6F4' # text
       # Bright and dim foreground colors
       dim_foreground: '#CDD6F4' # text
@@ -994,3 +995,4 @@ key_bindings:
 
   # Print all received window events.
   #print_events: false
+
