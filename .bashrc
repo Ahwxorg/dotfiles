@@ -1,6 +1,7 @@
 # Work computer bashrc
 
 export FZF_DEFAULT_COMMAND="find -L"
+export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reverse-list --border=rounded --info=inline --prompt=' > ' --pointer='→' --marker='♡' --color='dark,fg:magenta' --preview-label='[ Tree ]' --bind='ctrl-p:toggle-preview' --preview='tree -C {} | head -n 50'"
 export PATH="${PATH}:${HOME}/.local/bin/:~/.cargo/bin/"
 export LANG=en_US.UTF-8
 export EDITOR=nvim
@@ -23,4 +24,4 @@ bind 'TAB:menu-complete'
 
 # zstyle ':completion:*' menu select # I do not have Zsh on this system since no super user permissions.
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash # Used fzf's bash install scriped to avoid having to install fzf since no super use permissions.
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash # Used fzf's bash install scriped to avoid having to install fzf since no super user permissions.
