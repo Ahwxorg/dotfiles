@@ -14,3 +14,7 @@ TAB: menu-complete
 # e.g. type “git” and then hit control-p to cycle through all the recent git commands.
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+
+# Use Control-j and Control-k to scroll through the history (function as arrow up/down keys basically)
+Control-j: history-search-forward
+Control-k: history-search-backward
