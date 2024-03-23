@@ -60,6 +60,9 @@ zstyle ':completion:*' menu select
 # abbr gcm="git commit -m"
 # abbr gph="git push -u origin main"
 
+[ -f ~/.profile ] && source ~/.profile # Source ~/.profile so that I can easier manage stuff for bash and zsh
+[ -f ~/.secrets ] && source ~/.secrets # Source secrets such as Matrix key, etc
+
 gpa() {
   for remote in $(cat .git/config | grep 'remote "' | cut -d '"' -f2)
     git push -u $remote $1
