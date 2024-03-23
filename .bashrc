@@ -15,8 +15,7 @@ alias ls="ls --color -lah"
 alias nvim="$HOME/.local/src/nvim/nvim-linux64/bin/nvim" # I have to install Neovim this way since Ubuntu gives way too old Neovim versions for anything ever
 alias nv="nvim"
 
-
-source ~/.secrets # Source secrets such as Matrix key, etc
+[ -f ~/.secrets ] && source ~/.secrets # Source secrets such as Matrix key, etc
 
 # Designed to be piped, do something like `echo 'foobarbaz' | sendmatrix`
 sendmatrix() {
