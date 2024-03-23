@@ -2,10 +2,13 @@ if [ -e /home/liv/.nix-profile/etc/profile.d/nix.sh ]; then . /home/liv/.nix-pro
 
 export ZSH="$HOME/.config/zsh"
 export FZF_DEFAULT_COMMAND="find -L"
+export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reverse-list --border=rounded --info=inline --prompt=' > ' --pointer='→' --marker='♡ ' --color='dark,fg:magenta' --preview-label='[ Tree ]' --bind='ctrl-p:toggle-preview' --preview='tree -C {} | head -n 50'"
+export FZF_COMPLETION_DIR_COMMANDS="cd rmdir nvim tree"
 export PATH="${PATH}:${HOME}/.local/bin/"
 export DISABLE_AUTO_UPDATE=false
 export LANG=en_US.UTF-8
 alias nvim="nix run /home/liv/nixvim --"
+export EDITOR="nano" # Issues because I've been using Nixvim, see ~/.local/bin/nano
 
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
