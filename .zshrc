@@ -44,6 +44,10 @@ zstyle ':completion:*' menu select
 [ -f ~/.profile ] && source ~/.profile # Source ~/.profile so that I can easier manage stuff for bash and zsh
 [ -f ~/.secrets ] && source ~/.secrets # Source secrets such as Matrix key, etc
 
+sendmatrix() {
+  curl -XPOST -d "$( jq -Rsc --arg msgtype "$MATRIX_MSG_TYPE" '{$msgtype, body:.}')" "https://$MATRIX_HOMESERVER/_matrix/client/r0/rooms/$MATRIX_ROOM/send/m.room.message?access_token=$MATRIX_ACCESS_TOKEN"
+}
+
 gpa() {
   for remote in $(cat .git/config | grep 'remote "' | cut -d '"' -f2)
     git push -u $remote $1
