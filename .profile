@@ -23,7 +23,7 @@ if which yarn >/dev/null; then
 fi
 
 if [ -f "$HOME/.cargo/env" ]; then
-	source $HOME/.cargo/env
+	source "$HOME/.cargo/env"
 fi
 
 # If program is present, use that instead of default
