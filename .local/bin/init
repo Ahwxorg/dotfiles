@@ -1,0 +1,6 @@
+#!/bin/sh
+doas modprobe brcmfmac
+doas rc-service NetworkManager restart
+echo 1 | doas tee /sys/module/hid_apple/parameters/swap_fn_leftctrl
+echo 1 | doas tee /sys/module/hid_apple/parameters/swap_opt_cmd
+xrdb -l ~/.config/sxiv/Xresources
