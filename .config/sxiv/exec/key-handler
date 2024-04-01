@@ -1,12 +1,9 @@
 #!/bin/sh
 
 while read file
-do 
+do
   case "$1" in
-    "d") mv "$file" ~/.local/trash ;;
-    "w") setbg "$file" ;;
-    "u") uploadfile "$file" ;;
-    "x") mv "$file" ~/pix/wall/old-collection/ ;;
-    "c") mkdir -p /home/ahwx/temp-sxiv; cp "$file" /home/ahwx/temp-sxiv/ ;;
-  esac
+    "w") wbg "$file" ;; 
+    "d") mv "$file" "$HOME/.trash/";; 
+  esac 
 done
