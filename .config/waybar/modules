@@ -176,7 +176,7 @@
       "phone": "  ",
       "portable": "  ",
       "car": "  ",
-      "default": ["󰝟  ", "  ", "  ", "  "]
+      "default": ["󰝟 ", " ", " ", " "]
     },
     "scroll-step": 5.0,
     "on-click": "pamixer -t",
