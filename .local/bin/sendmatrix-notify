@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ $WAYLAND == 1 ]]; then
+  # To be continued on a Wayland machine...
+else
+  notify-send 'sendmatrix' "$(xclip -o | sendmatrix)"
+fi
