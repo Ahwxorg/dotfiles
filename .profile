@@ -11,6 +11,7 @@ alias yt-dlp-audio="yt-dlp -f 'ba' -x --audio-format mp3"
 alias emerge="doas emerge"
 alias zshconf="nvim ~/.zshrc"
 alias open="xdg-open"
+alias wget='wget --no-hsts'
 
 # Sources
 if [ -d "$HOME/.local/bin" ]; then
