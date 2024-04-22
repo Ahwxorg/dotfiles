@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ $WAYLAND == 1 ]]; then
+  notify-send 'sendmatrix' "$(wl-paste | sendmatrix)"
+else
+  notify-send 'sendmatrix' "$(xclip -o | sendmatrix)"
+fi
