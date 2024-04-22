@@ -1,7 +1,6 @@
 # Aliases
 alias :q="exit"
 alias ezit="exit"
-alias notes="nvim ~/Documents/todo.md"
 alias todo="nvim ~/Documents/todo.md"
 alias irc="ssh irc"
 alias tmuxconf="nvim ~/.config/tmux/tmux.conf"
