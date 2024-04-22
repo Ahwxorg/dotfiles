@@ -1,0 +1,5 @@
+#!/bin/sh
+
+CHOSEN=$(find "$HOME/Notes" -follow | grep -E '.md$' | tofi)
+
+kitty -e nix run "$HOME/Development/nixvim" -- "$CHOSEN"
