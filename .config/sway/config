@@ -1,3 +1,5 @@
+include "$HOME/.cache/wal/colors-sway"
+
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -36,10 +38,10 @@ output HDMI-A-1 mode 1920x1080 pos 1512 0
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -56,6 +58,15 @@ output HDMI-A-1 mode 1920x1080 pos 1512 0
 #       middle_emulation enabled
 #   }
 #
+
+input type:touchpad {
+    # note that DWT only works for internal touchpads (see libinput issue #524)
+    dwt enabled
+    tap disabled
+    natural_scroll disabled
+    middle_emulation enabled
+}
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
@@ -199,15 +210,13 @@ font pango:monospace 10
 #default_border none 
 #default_floating_border normal 0
 
-# The same as default_border none
-default_border pixel 1
+default_border pixel 4
 
-client.focused          #81A1C1 #81A1C1 #D8DEE9 #a7c080   #81A1C1
-client.focused_inactive #61AFEF #61AFEF #2E3440 #a7c080   #61AFEF
-client.unfocused        #3B4252 #3B4252 #D8DEE9 #a7c080   #3B4252
-client.urgent           #BF616A #BF616A #D8DEE9 #a7c080   #BF616A
-client.placeholder      #2E3440 #2E3440 #D8DEE9 #a7c080   #2E3440
-
+client.background        n/a #ffffff n/a
+client.focused           #ffffff #ffffff #eceff4 #ffffff #ffffff
+client.focused_inactive  #000000 #000000 #eceff4 #000000 #000000
+client.unfocused         #000000 #000000 #eceff4 #000000 #000000
+client.urgent            #434c5e #434c5e #eceff4 #434c5e #434c5e
 
 #
 # Status Bar:
@@ -218,7 +227,8 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command while bar; do sleep 1; done
+    #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
     colors {
         statusline #ffffff
