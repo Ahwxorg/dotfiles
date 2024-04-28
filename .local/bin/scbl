@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Determine elevation command
+if which sudo &>/dev/null; then
+	ELEVATE="sudo"
+elif which doas &>/dev/null; then
+	ELEVATE="doas"
+else
+	notify-send "Needs sudo/doas without password allowed to use 'echo' command."
+fi
+
+# Increase function
+increase_brightness() {
+	$ELEVATE brightnessctl s 25+
+	notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
+}
+
+decrease_brightness() {
+	$ELEVATE brightnessctl s 25-
+	notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
+}
+
+# Check for arguments
+if [ "$#" -ne 2 ]; then
+	echo "Usage: $0 --up <percentage> or $0 --down <percentage>"
+	exit 1
+fi
+
+# Check the direction and call respective function
+case "$1" in
+--up)
+	increase_brightness "$2"
+	;;
+--down)
+	decrease_brightness "$2"
+	;;
+*)
+	echo "Invalid argument: $1"
+	echo "Usage: $0 --up <percentage> or $0 --down <percentage>"
+	exit 1
+	;;
+esac
