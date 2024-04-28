@@ -4,57 +4,24 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+exec --no-startup-id init
+exec --no-startup-id kitty
+exec --no-startup-id swww
+
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod1
-set $othermod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu $(tofi-drun)
 
-### Appearance
-# window corner radius in px
-corner_radius 0
-
-# Window background blur
-blur off
-blur_xray off
-blur_passes 2
-blur_radius 5
-
-shadows off
-shadows_on_csd off
-shadow_blur_radius 20
-shadow_color #0000007F
-
-# inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-default_dim_inactive 0.0
-dim_inactive_colors.unfocused #000000FF
-dim_inactive_colors.urgent #900000FF
-
-# Move minimized windows into Scratchpad (enable|disable)
-scratchpad_minimize enable
-
-#default_border none
-
-### Output configuration
-#
-# Default wallpapers and more resolutions are available in /usr/share/backgrounds/sway/
-
-# Forest, almost skiing thingy
-output * bg ~/Pictures/Wallpapers/forest/wallhaven-vm2mmp.jpg fill
-# Windows XP like wallpaper, very nice
-output * bg ~/Pictures/Wallpapers/landscape/wallhaven-o57zgp.png fill
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -64,12 +31,12 @@ output * bg ~/Pictures/Wallpapers/landscape/wallhaven-o57zgp.png fill
 ### Idle configuration
 #
 # Example configuration:
-
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
-
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -84,11 +51,6 @@ exec swayidle -w \
 #       natural_scroll enabled
 #       middle_emulation enabled
 #   }
-input type:touchpad {
-  dwt enabled
-  tap enabled
-  natural_scroll disabled
-}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -99,39 +61,24 @@ input type:touchpad {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-    # Open FF
-    bindsym $mod+Shift+f exec firefox
-    # Make a screenshot
-    bindsym $mod+Shift+s exec screenshot
-    # Open Thunar
-    bindsym $mod+e exec thunar
-    # Open Element
-    bindsym $mod+Shift+e exec element-desktop
-
-    bindsym $mod+XF86MonBrightnessUp exec ~/.local/bin/kbbl --up 5
-    bindsym $mod+XF86MonBrightnessDown exec ~/.local/bin/kbbl --down 5
-    bindsym $othermod+XF86MonBrightnessUp exec ~/.local/bin/scbl --up 5
-    bindsym $othermod+XF86MonBrightnessDown exec ~/.local/bin/scbl --down 5
-    bindsym $mod+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym $mod+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-
-
-    assign [app_id="firefox"] 1
-    for_window [app_id="firefox"] focus
-
-    assign [app_id="Element"] 8
-    for_window [app_id="Element"] focus
-
-    # exec swaymsg "workspace 2; exec $term"
-    exec mako
-    exec gentoo-pipewire-launcher
-    exec foot --server
 
     # Kill focused window
     bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Run some programs
+    bindsym $mod+Shift+b exec walp
+    bindsym $mod+Shift+p exec pavucontrol
+    bindsym $mod+Shift+w exec wdisplays
+    bindsym $mod+Shift+s exec screenshot
+    bindsym $mod+Shift+f exec firefox
+    bindsym $mod+Shift+e exec nix-shell -p element-desktop --run element-desktop # should fix this, not too bothered by it now since it works
+    bindsym $mod+Shift+m exec /home/liv/.local/src/signal-desktop-unofficial/opt/Signal\ Unofficial/signal-desktop-unofficial
+    bindsym $mod+Shift+v exec virt-manager
+    bindsym $mod+Shift+n exec kitty --class floating -e nmtui connect
+    bindsym Mod4+Shift+l exec lock
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -144,7 +91,7 @@ input type:touchpad {
     bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym Mod4+Shift+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -154,10 +101,10 @@ input type:touchpad {
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    # bindsym $mod+Left focus left
-    # bindsym $mod+Down focus down
-    # bindsym $mod+Up focus up
-    # bindsym $mod+Right focus right
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -165,10 +112,10 @@ input type:touchpad {
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
     # Ditto, with arrow keys
-    # bindsym $mod+Shift+Left move left
-    # bindsym $mod+Shift+Down move down
-    # bindsym $mod+Shift+Up move up
-    # bindsym $mod+Shift+Right move right
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -202,41 +149,19 @@ input type:touchpad {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    #bindsym $mod+b splith
+    #bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    # bindsym $mod+s layout stacking
-    # bindsym $mod+w layout tabbed
-    # bindsym $mod+e layout toggle split
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    # bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    bindsym $mod+a focus parent
-
-    # i hate this
-    focus_follows_mouse no
-
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -251,10 +176,10 @@ mode "resize" {
     bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
-    # bindsym Left resize shrink width 10px
-    # bindsym Down resize grow height 10px
-    # bindsym Up resize shrink height 10px
-    # bindsym Right resize grow width 10px
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -263,35 +188,29 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Decorations:
+# 
+font pango:monospace 10
+for_window [title="^.*"] title_format ""
+default_border none 
+default_floating_border normal 0
+
+
+#
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
+    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while bar; do sleep 60; done
+    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
     colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-
-
-
-        background #000000
-        #background #00000000
         statusline #ffffff
-        separator #129832
-        focused_workspace  #000000 #ffffff #000000
-        active_workspace   #000000 #000000 #ffffff
-        inactive_workspace #000000 #000000 #888888
-        # urgent_workspace   #00000000 #00000000 #900000
-        binding_mode       #000000 #000000 #900000
-
-
-
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
 
