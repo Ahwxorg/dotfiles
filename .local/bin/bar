@@ -1,0 +1,3 @@
+#!/bin/dash
+
+echo "$(pulsemixer --get-volume | cut -d' ' -f1)% -$(acpi | cut -d, -f1-2 | cut -d: -f2) - $(date +'%Y-%m-%d %I:%M %p')"
