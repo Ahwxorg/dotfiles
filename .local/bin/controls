@@ -1,0 +1,17 @@
+#!/bin/dash
+
+brightness_up() {
+  doas brightnessctl s 25+; notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
+}
+
+brightness_down() {
+  doas brightnessctl s 25-; notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
+}
+
+volume_up() {
+  pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send "Volume is at $(pulsemixer --get-volume | cut -d' ' -f1)%"
+}
+
+volume_down() {
+  pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send "Volume is at $(pulsemixer --get-volume | cut -d' ' -f1)%"
+}

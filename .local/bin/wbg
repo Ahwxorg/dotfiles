@@ -1,3 +1,20 @@
-#!/bin/sh
+#!/bin/bash
 
-swaybg --image ~/Pictures/Wallpapers/landscape/wallhaven-gpvzme.jpg
+# Wallpaper is first argument
+WALLPAPER="$1"
+
+convert "$WALLPAPER" "$HOME/.local/share/bg.png" # Convert to PNG
+
+wal -c # Clear previous colors
+wal -i "$HOME/.local/share/bg.png" # Run pywal; generate colors
+cp ~/.cache/wal/colors-hyprland ~/.config/hypr/colors.conf # Copy file to Hyprland, causes crashes while streaming/recording
+pywalfox update # Update Firefox/Thunderbird
+
+# Set mako colors
+mapfile -t HEX_COLORS < "$HOME/.cache/wal/colors" # Map colors
+sed -i "s/background-color=.*/background-color=${HEX_COLORS[0]}E6/" "$HOME/.config/mako/config" # Replace colors in config
+sed -i "s/border-color=.*/border-color=${HEX_COLORS[3]}/" "$HOME/.config/mako/config"
+sed -i "s/text-color=.*/text-color=${HEX_COLORS[15]}/" "$HOME/.config/mako/config"
+makoctl reload # Reload mako
+
+swww img "$HOME/.local/share/bg.png" --transition-type fade # Set wallpaper
