@@ -1,5 +1,71 @@
 #!/bin/dash
 
+# Determine elevation command
+if which sudo &> /dev/null; then
+    ELEVATE="sudo"
+elif which doas &> /dev/null; then
+    ELEVATE="doas"
+else
+    notify-send "Needs sudo/doas without password allowed to use 'echo' command."
+fi
+
+# Function to increase brightness
+increase_brightness() {
+    current_brightness=$(cat /sys/class/leds/kbd_backlight/brightness)
+    max_brightness=$(cat /sys/class/leds/kbd_backlight/max_brightness)
+
+    percentage="$1"
+    new_brightness=$(awk "BEGIN {printf \"%.0f\", $current_brightness + ($max_brightness * $percentage / 100)}")
+
+    if [ "$new_brightness" -le "$max_brightness" ]; then
+	echo "$new_brightness" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
+        new_percentage=$(awk "BEGIN {printf \"%.0f\", ($new_brightness * 100) / $max_brightness}")
+        notify-send "Brightness increased to $new_percentage%"
+    else
+	echo "$max_brightness" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
+        notify-send "Brightness set to maximum"
+    fi
+}
+
+# Function to decrease brightness
+decrease_brightness() {
+    current_brightness=$(cat /sys/class/leds/kbd_backlight/brightness)
+    max_brightness=$(cat /sys/class/leds/kbd_backlight/max_brightness)
+
+    percentage="$1"
+    new_brightness=$(awk "BEGIN {printf \"%.0f\", $current_brightness - ($max_brightness * $percentage / 100)}")
+
+    if [ "$new_brightness" -ge 0 ]; then
+	echo "$new_brightness" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
+        new_percentage=$(awk "BEGIN {printf \"%.0f\", ($new_brightness * 100) / $max_brightness}")
+        notify-send "Brightness decreased to $new_percentage%"
+    else
+	echo "0" | $ELEVATE tee /sys/class/leds/kbd_backlight/brightness
+        notify-send "Brightness set to minimum"
+    fi
+}
+
+# Check for arguments
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 --up <percentage> or $0 --down <percentage>"
+    exit 1
+fi
+
+# Check the direction and call respective function
+case "$1" in
+    --up)
+        increase_brightness "$2"
+        ;;
+    --down)
+        decrease_brightness "$2"
+        ;;
+    *)
+        echo "Invalid argument: $1"
+        echo "Usage: $0 --up <percentage> or $0 --down <percentage>"
+        exit 1
+        ;;
+esac
+
 brightness_up() {
   doas brightnessctl s 25+; notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
 }
