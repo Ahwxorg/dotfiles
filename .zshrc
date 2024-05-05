@@ -151,7 +151,9 @@ gpa() {
 }
 
 startwm() {
-  dbus-run-session Hyprland
+  dbus-run-session sway
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
+
+source ~/.cache/wal/colors-tty.sh # Make tty look pretty
