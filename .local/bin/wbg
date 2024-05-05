@@ -17,4 +17,4 @@ sed -i "s/border-color=.*/border-color=${HEX_COLORS[3]}/" "$HOME/.config/mako/co
 sed -i "s/text-color=.*/text-color=${HEX_COLORS[15]}/" "$HOME/.config/mako/config"
 makoctl reload # Reload mako
 
-swww img "$HOME/.local/share/bg.png" --transition-type fade # Set wallpaper
+swww img "$HOME/.local/share/bg.png" --transition-type fade --resize crop # Set wallpaper
