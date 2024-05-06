@@ -7,8 +7,10 @@ include "$HOME/.cache/wal/colors-sway"
 # Read `man 5 sway` for a complete reference.
 
 exec --no-startup-id init
-exec --no-startup-id kitty
 exec --no-startup-id swww-daemon
+exec --no-startup-id gentoo-pipewire-launcher
+exec --no-startup-id mako
+exec --no-startup-id foot --server
 exec_always autotiling
 
 ### Variables
@@ -19,7 +21,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term footclient
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -30,7 +32,8 @@ set $menu rofi -show drun
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 output eDP-1 mode 3024x1964 pos 0 0 scale 2
 output "Fujitsu Siemens Computers GmbH E24T-7 LED YV8X006903" mode 1920x1080 pos 3432 0
-output HDMI-A-1 mode 1920x1080 pos 1512 0
+output "Acer Technologies V223HQ LJ40D0418509" mode 1920x1080 pos 1512 0 transform 90
+output HDMI-A-1 mode 1920x1080@165Hz pos 2592 0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -38,10 +41,10 @@ output HDMI-A-1 mode 1920x1080 pos 1512 0
 #
 # Example configuration:
 #
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+#exec swayidle -w \
+#         timeout 300 'swaylock -f -c 000000' \
+#         #timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#         #before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -84,16 +87,24 @@ input type:touchpad {
     bindsym $mod+d exec $menu
 
     # Run some programs
+    bindsym $mod+e exec thunar
     bindsym $mod+Shift+b exec walp
     bindsym $mod+Shift+p exec pavucontrol
     bindsym $mod+Shift+w exec wdisplays
     bindsym $mod+Shift+s exec screenshot
     bindsym $mod+Shift+f exec firefox
+    bindsym $mod+Shift+t exec thunderbird
     bindsym $mod+Shift+e exec nix-shell -p element-desktop --run element-desktop # should fix this, not too bothered by it now since it works
     bindsym $mod+Shift+m exec /home/liv/.local/src/signal-desktop-unofficial/opt/Signal\ Unofficial/signal-desktop-unofficial
     bindsym $mod+Shift+v exec virt-manager
     bindsym $mod+Shift+n exec kitty --class floating -e nmtui connect
     bindsym Mod4+Shift+l exec lock
+    bindsym XF86AudioRaiseVolume exec --no-startup-id controls volume_up
+    bindsym XF86AudioLowerVolume exec --no-startup-id controls volume_down
+    bindsym XF86MonBrightnessUp exec --no-startup-id controls brightness_up
+    bindsym XF86MonBrightnessDown exec --no-startup-id controls brightness_down
+    bindsym $mod+XF86MonBrightnessUp exec --no-startup-id kbbl --up 5
+    bindsym $mod+XF86MonBrightnessDown exec --no-startup-id kbbl --down 5
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -168,9 +179,9 @@ input type:touchpad {
     #bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    #bindsym $mod+s layout stacking
+    #bindsym $mod+w layout tabbed
+    #bindsym $mod+e layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -225,6 +236,8 @@ client.urgent            #434c5e #434c5e #eceff4 #434c5e #434c5e
 bar {
     position top
 
+    height 33
+
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while bar; do sleep 1; done
@@ -232,8 +245,14 @@ bar {
 
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        #background #00000000
+        background #000000
+        #inactive_workspace #00000000 #00000000 #ffffff
+        inactive_workspace #000000 #000000 #ffffff
+        #active_workspace #00000000 #ffffff #000000
+        active_workspace #000000 #ffffff #000000
+        #focused_workspace #00000000 #ffffff #000000
+        focused_workspace #000000 #ffffff #000000
     }
 }
 
