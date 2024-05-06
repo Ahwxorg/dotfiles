@@ -4,12 +4,10 @@ export ZSH="$HOME/.config/zsh"
 export FZF_DEFAULT_COMMAND="find -L"
 export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reverse-list --border=rounded --info=inline --prompt=' > ' --pointer='→' --marker='♡ ' --color='dark,fg:magenta' --preview-label='[ Tree ]' --bind='ctrl-p:toggle-preview' --preview='tree -C {} | head -n 50'"
 export FZF_COMPLETION_DIR_COMMANDS="cd rmdir nvim tree"
-export PATH="${PATH}:${HOME}/.local/bin/"
+export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.cargo/bin/:${HOME}/.fzf/bin/"
 export LANG=en_US.UTF-8
-alias nvim="nix run /home/liv/Development/nixvim --"
-export EDITOR="nano" # Issues because I've been using Nixvim, see ~/.local/bin/nano
-export VISUAL="nano" # Issues ^^
-# export EDITOR="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Load ZSH modules
 #
@@ -27,10 +25,12 @@ zmodload zsh/zpty
 source ~/.config/zsh/zsh-abbr/zsh-abbr.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.config/zsh/zsh-bd/bd.zsh
 # Fzf
 if [[ -d /usr/share/fzf ]]; then
   source /usr/share/fzf/key-bindings.zsh
+elif [[ -d $HOME/.fzf/shell ]]; then
+  source $HOME/.fzf/shell/completion.zsh
+  source $HOME/.fzf/shell/key-bindings.zsh
 else
   echo "Fzf does not seem to be installed, functionality will be limited."
 fi
@@ -156,4 +156,6 @@ startwm() {
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
 
-source ~/.cache/wal/colors-tty.sh # Make tty look pretty
+if [[ -d "$HOME/.cache/wal/" ]]; then
+  source ~/.cache/wal/colors-tty.sh # Make tty look pretty
+fi
