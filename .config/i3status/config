@@ -1,6 +1,6 @@
 general {
   colors = true
-  color_good = "#a3be8c"
+  color_good = "#ffffff"
   color_bad  = "#bf616a"
   color_degraded = "#ebcb8b"
   interval = 1
@@ -17,7 +17,7 @@ disk "/" {
 }
 
 ethernet enp42s0 {
-  format_up = "%ip (%speed)"
+  format_up = "Ethernet up"
   format_down = "Ethernet down"
 }
 
