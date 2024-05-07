@@ -4,11 +4,11 @@ export ZSH="$HOME/.config/zsh"
 export FZF_DEFAULT_COMMAND="find -L"
 export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reverse-list --border=rounded --info=inline --prompt=' > ' --pointer='→' --marker='♡ ' --color='dark,fg:magenta' --preview-label='[ Tree ]' --bind='ctrl-p:toggle-preview' --preview='tree -C {} | head -n 50'"
 export FZF_COMPLETION_DIR_COMMANDS="cd rmdir nvim tree"
-export PATH="${PATH}:${HOME}/.local/bin/"
+export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.cargo/bin/"
 export LANG=en_US.UTF-8
-alias nvim="nix run /home/liv/Development/nixvim --"
-export EDITOR="nano" # Issues because I've been using Nixvim, see ~/.local/bin/nano
-export VISUAL="nano" # Issues ^^
+#alias nvim="nix run /home/liv/Development/nixvim --"
+export EDITOR="nvim" # Issues because I've been using Nixvim, see ~/.local/bin/nano
+export VISUAL="nvim" # Issues ^^
 # export EDITOR="nvim"
 
 # Load ZSH modules
@@ -151,7 +151,7 @@ gpa() {
 }
 
 startwm() {
-  dbus-run-session sway
+  startx
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
