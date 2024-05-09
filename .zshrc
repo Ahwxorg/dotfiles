@@ -6,10 +6,7 @@ export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reve
 export FZF_COMPLETION_DIR_COMMANDS="cd rmdir nvim tree"
 export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.cargo/bin/"
 export LANG=en_US.UTF-8
-#alias nvim="nix run /home/liv/Development/nixvim --"
-export EDITOR="nvim" # Issues because I've been using Nixvim, see ~/.local/bin/nano
-export VISUAL="nvim" # Issues ^^
-# export EDITOR="nvim"
+alias nvim="nix run /home/liv/Development/nixvim --"
 
 # Load ZSH modules
 #
