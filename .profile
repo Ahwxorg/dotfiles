@@ -1,5 +1,6 @@
 # Aliases
 alias :q="exit"
+alias ecit="exit"
 alias ezit="exit"
 alias todo="nvim ~/Documents/todo.md"
 alias irc="ssh irc"
@@ -13,6 +14,8 @@ alias zshconf="nvim ~/.zshrc"
 alias open="xdg-open"
 alias wget='wget --no-hsts'
 alias lg="lazygit"
+# alias nvim="$HOME/.local/src/nvim/nvim-linux64/bin/nvim" # I have to install Neovim this way since Ubuntu gives way too old Neovim versions for anything ever (work)
+alias nv="nvim"
 
 # Sources
 if [ -d "$HOME/.local/bin" ]; then
@@ -34,6 +37,7 @@ fi
 
 # If program is present, use that instead of default
 which sxiv &>/dev/null && alias imv="sxiv" || true # Use sxiv when available
+which nvim &>/dev/null && alias nv="nvim" && alias v="nvim" || true # Use sxiv when available
 which bat &>/dev/null && alias cat="bat -pp" || true # Use bat when available
 which wl-copy &>/dev/null && alias wcl="wl-copy" || alias wcl="xclip -sel c" # Alias wl-copy when present, otherwise use xclip
 which xdg-open &>/dev/null && alias open="xdg-open" # Use xdg-open for open command, open is already open on macOS
