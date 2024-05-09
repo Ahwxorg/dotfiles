@@ -25,7 +25,7 @@ bindsym $mod+Shift+w exec wdisplays
 bindsym $mod+Shift+s exec xscreenshot
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+t exec thunderbird
-bindsym $mod+Shift+e exec nix-shell -p element-desktop --run element-desktop # should fix this, not too bothered by it now since it works
+bindsym $mod+Shift+e exec element-desktop
 bindsym $mod+Shift+m exec /home/liv/.local/src/signal-desktop-unofficial/opt/Signal\ Unofficial/signal-desktop-unofficial
 bindsym $mod+Shift+v exec virt-manager
 bindsym $mod+Shift+n exec kitty --class floating -e nmtui connect
@@ -129,6 +129,19 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
+font pango:monospace 10
+#for_window [title="^.*"] title_format ""
+#default_border none 
+#default_floating_border normal 0
+
+default_border pixel 4
+
+client.background        n/a #ffffff n/a
+client.focused           #ffffff #ffffff #eceff4 #ffffff #ffffff
+client.focused_inactive  #000000 #000000 #eceff4 #000000 #000000
+client.unfocused         #000000 #000000 #eceff4 #000000 #000000
+client.urgent            #434c5e #434c5e #eceff4 #434c5e #434c5e
 
 bar {
   colors {
