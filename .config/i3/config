@@ -29,7 +29,7 @@ bindsym $mod+Shift+e exec element-desktop
 bindsym $mod+Shift+m exec /home/liv/.local/src/signal-desktop-unofficial/opt/Signal\ Unofficial/signal-desktop-unofficial
 bindsym $mod+Shift+v exec virt-manager
 bindsym $mod+Shift+n exec kitty --class floating -e nmtui connect
-bindsym Mod4+Shift+l exec lock
+bindsym Mod4+Shift+l exec betterlockscreen -l
 
 # change focus
 bindsym $mod+h focus left
