@@ -21,7 +21,7 @@ bindsym $mod+e exec thunar
 bindsym $mod+Shift+b exec walp
 bindsym $mod+Shift+p exec pavucontrol
 bindsym $mod+Shift+w exec wdisplays
-bindsym $mod+Shift+s exec screenshot
+bindsym $mod+Shift+s exec xscreenshot
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+t exec thunderbird
 bindsym $mod+Shift+e exec nix-shell -p element-desktop --run element-desktop # should fix this, not too bothered by it now since it works
