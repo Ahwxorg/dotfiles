@@ -6,11 +6,11 @@
 
 window#waybar {
 /* Transparent waybar. Make sure to comment out background-color: and border: */
-background: rgba(0,0,0,0);
-/* background-color: #1e1e2e; */
-/* border: 2px solid #313244; */
-transition-property: background-color;
-transition-duration: .5s;
+/* background: rgba(0,0,0,0); */
+background-color: #1e1e2e;
+/*border: 2px solid #1e1e2e;*/
+/*transition-property: background-color;
+transition-duration: .5s;*/
 }
 
 window#waybar.hidden {
@@ -122,7 +122,7 @@ margin-right: 2px;
 border-radius: 100%;
 padding: 0px;
 opacity: .2;
-transition: opacity .5s;
+/*transition: opacity .5s;*/
 }
 
 #workspaces button.active {
