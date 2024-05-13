@@ -6,8 +6,7 @@ export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reve
 export FZF_COMPLETION_DIR_COMMANDS="cd rmdir nvim tree"
 export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.cargo/bin/:${HOME}/.fzf/bin/"
 export LANG=en_US.UTF-8
-export EDITOR="nvim"
-export VISUAL="nvim"
+alias nvim="nix run /home/liv/Development/nixvim --"
 
 # Load ZSH modules
 #
@@ -151,7 +150,7 @@ gpa() {
 }
 
 startwm() {
-  dbus-run-session sway
+  startx
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi

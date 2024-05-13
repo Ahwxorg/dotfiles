@@ -27,9 +27,13 @@ for m in $primary $(bspc query -M | grep -v "$primary"); do
     shift 1
 done
 
-for m in $(bspc query -M --names); do
-    bspc monitor $m -d ${m}1 ${m}2 ${m}3 ${m}4 ${m}5 ${m}6 ${m}7 ${m}8 ${m}9
-done
+# Add 9 workspaces per monitor
+#for m in $(bspc query -M --names); do
+#    bspc monitor $m -d ${m}1 ${m}2 ${m}3 ${m}4 ${m}5 ${m}6 ${m}7 ${m}8 ${m}9
+#done
+
+# Just add 10 workspaces in total
+bspc monitor $m -d 1 2 3 4 5 6 7 8 9 10
 
 "$HOME/.config/polybar/launch.sh" &
 
