@@ -1,3 +1,5 @@
 #!/bin/bash
 
-sxiv -t ~/Pictures/Wallpapers/*
+which swiv &>/dev/null && SIV=swiv || SIV=sxiv
+
+$SIV -t ~/Pictures/Wallpapers/*
