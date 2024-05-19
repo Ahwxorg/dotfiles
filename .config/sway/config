@@ -109,8 +109,8 @@ input type:touchpad {
     bindsym $mod+Shift+n exec notes
     bindsym $mod+Shift+v exec virt-manager
     bindsym Mod4+Shift+l exec lock
-    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send "Volume is at $(pulsemixer --get-volume | cut -d' ' -f1)%"
-    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send "Volume is at $(pulsemixer --get-volume | cut -d' ' -f1)%"
+    bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%; notify-send "Volume is at $(pulsemixer --get-volume | cut -d' ' -f1)%"
+    bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%; notify-send "Volume is at $(pulsemixer --get-volume | cut -d' ' -f1)%"
     bindsym $mod+F7 exec --no-startup-id doas brightnessctl s 5%-; notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
     bindsym $mod+F8 exec --no-startup-id doas brightnessctl s 5%+; notify-send -r 45829 "Brightness is at $(brightnessctl info | grep % | awk '{print $4}' | cut -d\( -f2 | cut -d\) -f1)"
 
