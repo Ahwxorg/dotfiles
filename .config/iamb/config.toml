@@ -1,0 +1,5 @@
+[profiles."ahwx.org"]
+user_id = "@ahwx:ahwx.org"
+
+[settings]
+image_preview = { }
