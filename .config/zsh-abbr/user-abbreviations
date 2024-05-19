@@ -1,3 +1,4 @@
+abbr "g"="git"
 abbr "ga"="git add ."
 abbr "gc"="git clone"
 abbr "gcm"="git commit -m"
