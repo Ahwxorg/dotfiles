@@ -3,7 +3,7 @@
 while read file
 do
   case "$1" in
-    "w") wbg "$file" ;; 
+    "w") setbg "$file" ;; 
     "d") mv "$file" "$HOME/.trash/";; 
   esac 
 done
