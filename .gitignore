@@ -58,4 +58,12 @@ Notes
 .config/spotify-tui
 .config/waybar/weather.py
 .config/xfce4
+.android
+.minecraft
+.gnupg
+.dbus
+.nix-defexpr
+.steam
+.vscode-oss
+go
 .secrets
