@@ -47,5 +47,15 @@ Notes
 .config/Signal\ Desktop
 .config/spicy
 .config/gtk-3.0/bookmarks
+.config/Mumble
+.config/VSCodium
+.config/Yubico
+.config/filezilla
+.config/obsidian
+.config/cura
+.config/rclone
+.config/spotify
+.config/spotify-tui
+.config/waybar/weather.py
 .config/xfce4
 .secrets
