@@ -1,5 +1,6 @@
 if [ -e /home/liv/.nix-profile/etc/profile.d/nix.sh ]; then . /home/liv/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+export KUBECONFIG="$HOME/.kube/config.yaml"
 export ZSH="$HOME/.config/zsh"
 export FZF_DEFAULT_COMMAND="find -L"
 export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reverse-list --border=rounded --info=inline --prompt=' > ' --pointer='→' --marker='♡ ' --color='dark,fg:magenta' --preview-label='[ Tree ]' --bind='ctrl-p:toggle-preview' --preview='tree -C {} | head -n 50'"
@@ -150,7 +151,7 @@ gpa() {
 }
 
 startwm() {
-  startx
+  dbus-run-session sway
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
