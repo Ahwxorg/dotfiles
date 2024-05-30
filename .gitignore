@@ -67,3 +67,4 @@ Notes
 .vscode-oss
 go
 .secrets
+.kube/
