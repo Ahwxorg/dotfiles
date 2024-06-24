@@ -82,7 +82,8 @@
         "format": "   {:%I:%M %p} "
     },
     "network": {
-        "format-wifi": "{icon} {essid}",
+        "format-wifi": "{icon}",
+        // "format-wifi": "{icon} {essid}",
         "format-disconnected": "Disconnected ⚠ ",
         "format-icons": [
             "󰤯 ",
