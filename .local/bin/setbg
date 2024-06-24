@@ -4,7 +4,7 @@ convert "$1" ~/.local/share/bg.png
 which swww &>/dev/null && BGSET=swww || BGSET=xwallpaper
 
 if [[ "$BGSET" == "swww" ]]; then
-  swww img ~/.local/share/bg.png --transition-type fade --no-resize
+  swww img ~/.local/share/bg.png --transition-type fade
 elif [[ "$BGSET" == "xwallpaper" ]]; then
   feh --bg-scale --no-fehbg ~/.local/share/bg.png
 fi
