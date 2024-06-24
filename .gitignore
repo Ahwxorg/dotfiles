@@ -68,3 +68,4 @@ Notes
 go
 .secrets
 .kube/
+.config/waybar/weather.py # Ignore due to API key
