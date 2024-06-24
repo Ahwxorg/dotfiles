@@ -1,10 +1,10 @@
 sort=-time
 layer=overlay
-background-color=#2e3440
+background-color=#0a0f0fE6
 width=300
 height=110
 border-size=2
-border-color=#88c0d0
+border-color=#306A98
 border-radius=5
 icons=0
 max-icon-size=64
@@ -14,13 +14,13 @@ font=monospace 14
 max-history=5000
 
 [urgency=low]
-border-color=#cccccc
+border-color=#306A98
 
 [urgency=normal]
-border-color=#d08770
+border-color=#306A98
 
 [urgency=high]
-border-color=#bf616a
+border-color=#306A98
 default-timeout=0
 
 [category=mpd]
