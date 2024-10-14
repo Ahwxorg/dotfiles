@@ -6,7 +6,8 @@ export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,5%,5%,5% --layout=reve
 export FZF_COMPLETION_DIR_COMMANDS="cd rmdir nvim tree"
 export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.cargo/bin/:${HOME}/.fzf/bin/"
 export LANG=en_US.UTF-8
-alias nvim="nix run /home/liv/Development/nixvim --"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # Load ZSH modules
 #
@@ -115,22 +116,22 @@ fi
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 #export PS1=$(echo -e "\e[0;97m\${PWD/#\$HOME/~} > \e[0;0m")
-export PS1="%~ > "
+export PS1="%~ at $(hostname) > "
 
 # complete -cf doas
 
 # Run only once.
-# abbr mkdir="mkdir -p"
-# abbr vim="nvim"
-# abbr v="nvim"
-# abbr vi="nvim"
-# abbr nv="nvim"
-# abbr nvi="nvim"
-# abbr gc="git clone"
-# abbr ga="git add ."
-# abbr gcm="git commit -m"
-# abbr gph="git push -u origin main"
-# abbr g="git"
+#  abbr mkdir="mkdir -p"
+#  abbr vim="nvim"
+#  abbr v="nvim"
+#  abbr vi="nvim"
+#  abbr nv="nvim"
+#  abbr nvi="nvim"
+#  abbr gc="git clone"
+#  abbr ga="git add ."
+#  abbr gcm="git commit -m"
+#  abbr gph="git push -u origin main"
+#  abbr g="git"
 
 # Keybindings
 
@@ -150,7 +151,7 @@ gpa() {
 }
 
 startwm() {
-  startx
+  dbus-run-session sway
 }
 
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then startwm; fi
