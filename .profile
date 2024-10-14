@@ -54,6 +54,4 @@ if [[ $(which sxiv&>/dev/null && echo 1) == "1" ]]; then
 elif [[ $(which nsxiv&>/dev/null && echo 1) == "1" ]]; then
   alias imv="nsxiv"
   alias sxiv="nsxiv"
-else
-  alias ls="ls --color=auto"
 fi
