@@ -6,11 +6,14 @@ red='f38ba8' green='a6e3a1' yellow='f9e2af'
 blue='89b4fa' magenta='cba6f7' cyan='89dceb'
 alpha='00000000'
 
+pulsemixer --mute
+
 # CMD
 swaylock -f \
 	`# General` \
 	--ignore-empty-password \
 	--show-failed-attempts \
+	--fingerprint \
 	--indicator-caps-lock \
 	--color ${bg}FF \
 	`#--image ${IMAGE} --scaling fill` \
@@ -46,3 +49,5 @@ swaylock -f \
 	--text-ver-color ${bg} \
 	--text-wrong-color ${bg} \
 	--indicator-caps-lock
+
+# Note: --fingerprint required fprintd and https://github.com/SL-RU/swaylock-fprintd.

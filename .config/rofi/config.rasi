@@ -1,2 +1,16 @@
-//@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
+configuration {
+  drun {
+    display-name: "[^.^]";
+  }
+
+  run {
+    display-name: "[°.°]";
+  }
+
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
 @theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"

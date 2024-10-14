@@ -36,7 +36,7 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # If program is present, use that instead of default
-which sxiv &>/dev/null && alias imv="sxiv" || true # Use sxiv when available
+which swiv &>/dev/null && alias sxiv="swiv" || true # Use swiv when available
 which nvim &>/dev/null && alias nv="nvim" && alias v="nvim" || true # Use sxiv when available
 which bat &>/dev/null && alias cat="bat -pp" || true # Use bat when available
 which wl-copy &>/dev/null && alias wcl="wl-copy" || alias wcl="xclip -sel c" # Alias wl-copy when present, otherwise use xclip

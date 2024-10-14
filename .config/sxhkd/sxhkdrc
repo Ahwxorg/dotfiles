@@ -10,19 +10,17 @@ alt + q
 alt + Return
   kitty
 alt + shift + e
-  nix-shell -p element-desktop --run element-desktop
+  element-desktop
 alt + shift + s
-  screenshot
-alt + shift + b
-  walp
+  xscreenshot
 alt + shift + w
+  walp
+alt + shift + b
   arandr
 alt + shift + f
   firefox
 alt + shift + p
   pavucontrol
-alt + shift + m
-  /home/liv/.local/src/signal-desktop-unofficial/opt/Signal\ Unofficial/signal-desktop-unofficial
 alt + shift + v
   virt-manager
 alt + shift + n
@@ -32,7 +30,7 @@ alt + e
 
 # lock my computer
 super + shift + l
-  slock
+  betterlockscreen -l
 
 # controls
 XF86Audio{RaiseVolume,LowerVolume}
