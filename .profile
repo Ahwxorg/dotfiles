@@ -6,7 +6,6 @@ alias todo="nvim ~/Documents/todo.md"
 alias irc="ssh irc"
 alias tmuxconf="nvim ~/.config/tmux/tmux.conf"
 alias termconf="nvim ~/.config/alacritty/alacritty.yml"
-alias reboot-to-macos="echo 1 | doas asahi-bless 1>/dev/null && doas reboot"
 alias zshrc="nvim ~/.zshrc"
 alias yt-dlp-audio="yt-dlp -f 'ba' -x --audio-format mp3"
 alias emerge="doas emerge"
@@ -14,7 +13,7 @@ alias zshconf="nvim ~/.zshrc"
 alias open="xdg-open"
 alias wget='wget --no-hsts'
 alias lg="lazygit"
-# alias nvim="$HOME/.local/src/nvim/nvim-linux64/bin/nvim" # I have to install Neovim this way since Ubuntu gives way too old Neovim versions for anything ever (work)
+alias nvim="$HOME/.local/src/nvim/nvim-linux64/bin/nvim" # I have to install Neovim this way since Ubuntu gives way too old Neovim versions for anything ever (work)
 alias nv="nvim"
 
 # Sources
@@ -36,8 +35,7 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 # If program is present, use that instead of default
-which swiv &>/dev/null && alias sxiv="swiv" || true # Use swiv when available
-which nvim &>/dev/null && alias nv="nvim" && alias v="nvim" || true # Use sxiv when available
+# which nvim &>/dev/null && alias nv="nvim" && alias v="nvim" || true
 which bat &>/dev/null && alias cat="bat -pp" || true # Use bat when available
 which wl-copy &>/dev/null && alias wcl="wl-copy" || alias wcl="xclip -sel c" # Alias wl-copy when present, otherwise use xclip
 which xdg-open &>/dev/null && alias open="xdg-open" # Use xdg-open for open command, open is already open on macOS
@@ -47,6 +45,15 @@ if [[ $(which eza&>/dev/null && echo 1) == "1" ]]; then
   alias ls="eza --color=auto --group --classify --icons --git --group-directories-first --header"
 elif [[ $(which exa&>/dev/null && echo 1) == "1" ]]; then
   alias ls="exa --color=auto --group --classify --icons --git --group-directories-first --header"
+else
+  alias ls="ls --color=auto"
+fi
+
+if [[ $(which sxiv&>/dev/null && echo 1) == "1" ]]; then
+  alias imv="sxiv"
+elif [[ $(which nsxiv&>/dev/null && echo 1) == "1" ]]; then
+  alias imv="nsxiv"
+  alias sxiv="nsxiv"
 else
   alias ls="ls --color=auto"
 fi
