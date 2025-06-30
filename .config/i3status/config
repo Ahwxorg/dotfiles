@@ -1,31 +1,32 @@
 general {
-  colors = true
-  color_good = "#ffffff"
-  color_bad  = "#bf616a"
-  color_degraded = "#ebcb8b"
-  interval = 1
-  separator = " | "
+  output_format = "i3bar"
+  colors = false
+  markup = pango
+  interval = 5
 }
 
-order += "disk /"
-order += "ethernet enp42s0"
-order += "memory"
-order += "tztime local"
+order += "load"
+order += "ethernet _first_"
+order += "volume master"
+order += "time"
 
-disk "/" {
-  format = "/: %percentage_used"
+load {
+  format = "LOAD: %5min <span foreground='#895ccc'> | </span>"
 }
 
-ethernet enp42s0 {
-  format_up = "Ethernet up"
-  format_down = "Ethernet down"
+ethernet _first_ {
+  format_up =   "NET: %ip <span foreground='#895ccc'> | </span>"
+  format_down = "NET: disconnected <span foreground='#895ccc'> | </span>"
 }
 
-memory {
-  memory_used_method = classical
-  format="%used/%total"
+volume master {
+  format = "VOL: %volume <span foreground='#895ccc'> | </span>"
+  format_muted = "VOL: muted <span foreground='#895ccc'> | </span>"
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
 }
 
-tztime local {
-  format = "%A %d-%m - %H:%M"
+time {
+  format = "%A, %b %d, %H:%M"
 }
