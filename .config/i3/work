@@ -1,18 +1,36 @@
 set $mod Mod1
 set $mod4 Mod4
 
-font pango:monospace 8
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:Ionicons 9, Poppins Regular 14
 
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xrandr --output DP-2 --mode 3840x2160 --rate 60 --primary --output DP-0 --right-of DP-2 --mode 3840x2160 --rate 60
+font pango:GohuFont 14 Nerd Font Mono 14
+# font pango:DejaVu Sans Mono 14
 
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+# exec --no-startup-id dex --autostart --environment i3
+# Displays *never* work correctly, so I guess I need to do this manually anyways...
+#exec --no-startup-id xrandr --output DP-2 --primary --output DP-0 --right-of DP-2
+
+# Autostart some programs/tools
+exec --no-startup-id picom
 exec --no-startup-id thunderbird
 exec --no-startup-id firefox
 exec --no-startup-id alacritty
+exec_always --no-startup-id autotiling
+exec_always --no-startup-id setxkbmap -option ctrl:swapcaps
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod4+Shift+l exec i3lock --color 2B2130
 
+# Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -25,20 +43,35 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec alacritty
 
+# start a terminal
+bindsym $mod+e exec nautilus
+
 # open ff
 bindsym $mod+Shift+f exec firefox
+
+# take screenshot
+bindsym $mod+Shift+s exec flameshot gui
+
+# send clipboard to matrix room
+bindsym $mod+Shift+c exec "alacritty -e '~/.local/bin/sendmatrix-notify; sleep 5'"
 
 # kill focused window
 bindsym $mod+q kill
 
-# start rofi (a program launcher)
+# start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun
+# A more modern dmenu replacement is rofi:
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+
 
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -47,6 +80,9 @@ bindsym $mod+Shift+l move right
 
 # split in vertical orientation
 bindsym $mod+v split v
+
+# use tabbed mode
+bindsym $mod+g layout tabbed
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -104,9 +140,9 @@ client.placeholder      #2E3440 #2E3440 #D8DEE9 #a7c080   #2E3440
 # reload the configuration file
 bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-# bindsym $mod+Shift+r restart
+bindsym $mod+Ctrl+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Ctrl+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -129,22 +165,47 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+default_border pixel 2
+
+client.background        n/a #ffffff n/a
+client.focused           #ffffff #ffffff #eceff4 #ffffff #ffffff
+client.focused_inactive  #000000 #000000 #eceff4 #000000 #000000
+client.unfocused         #000000 #000000 #eceff4 #000000 #000000
+client.urgent            #434c5e #434c5e #eceff4 #434c5e #434c5e
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
   status_command i3status
   position top
+	workspace_min_width 24
   #i3bar_command i3bar -t
+	strip_workspace_numbers yes
   colors {
-    background #00000000
-    statusline #ffffff
-    separator #ffffff
-    focused_workspace  #000000 #ffffff #000000
-    active_workspace   #000000 #000000 #ffffff
-    inactive_workspace #000000 #000000 #888888
-    # urgent_workspace   #00000000 #00000000 #900000
-    binding_mode       #000000 #000000 #900000
-  }
+	  background #000000 #  #141c21
+	  statusline #ffffff #  #141c21
+	  separator  #000000 # #141c21
+
+	  # colour of border, background, and text
+	  focused_workspace #93a1a1 #141c21 #888888
+	  active_workspace #141c21 #141c21 #93a1a1
+	  inactive_workspace #141c21 #141c21 #93a1a1
+	  urgent_workspace #141c21 #b08500 #93a1a1
+	}
+
+  # colors {
+  #   background #00000000
+  #   statusline #ffffff
+  #   separator #ffffff
+  #   focused_workspace  #000000 #ffffff #000000
+  #   active_workspace   #000000 #000000 #ffffff
+  #   inactive_workspace #000000 #000000 #888888
+  #   # urgent_workspace   #00000000 #00000000 #900000
+  #   binding_mode       #000000 #000000 #900000
+  # }
 }
+
+for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver] floating enable
+for_window [class=Eog|Sxiv|feh|mpv|Vlc|File-roller|Xarchiver] focus
 
 exec --no-startup-id sleep 2 && killall -q magnus
